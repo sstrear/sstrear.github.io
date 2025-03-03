@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sammies Documentation</title>
+    <!-- Google Fonts: Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Marked.js for Markdown Parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+      /* Additional styles for the documentation page */
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 40px 20px;
+      }
+      
+      #doc-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #181818;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+      
+      #doc-container h1,
+      #doc-container h2,
+      #doc-container h3,
+      #doc-container h4,
+      #doc-container p,
+      #doc-container li {
+        margin-bottom: 1rem;
+        line-height: 1.5;
+      }
+
+      #doc-container a {
+        color: #e0e0e0;
+        text-decoration: underline;
+      }
+      
+      .back-link {
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="doc-container"></div>
+    <div class="back-link">
+      <a href="index.html" class="cta-button">Back to Home</a>
+    </div>
+    <script>
+      const sammiesDocumentation = `
+# Sammies: Compact, Waterproof, and Lightweight Outdoor Shoes
+
+## Overview
+Sammies is an innovative footwear company dedicated to creating compactable, waterproof, and lightweight shoes tailored for backpackers and outdoor enthusiasts. The design emphasizes portability, durability, and comfort, leveraging high-tech materials such as synthetic down and thermoplastics.
+
+## Vision
+To provide a convenient solution for explorers, offering a campsite and après-ski shoe that balances performance with comfort and sustainability.
+
+## Problem Statement
+Outdoor enthusiasts often sacrifice size and weight for durability and performance. Current solutions lack the comfort, convenience, accessibility, and safety that Sammies provides. Our innovation disrupts the need for multiple shoes by offering a single adaptable solution.
+
+## Product Features
+- **Warmth & Waterproofing:** Insulated with synthetic down and constructed with a TPU bottom for waterproof protection.
+- **Adjustable Fit:** Incorporates an inflatable system with a drawstring cinching mechanism.
+- **Durability & Style:** Black nylon upper with red stitching, designed to withstand rugged environments while maintaining a sleek look.
+- **Compactable Design:** The sole deflates and folds down for easy storage and travel.
+
+## Target Market
+### Primary Audience
+1. **Backpackers (18-35 years old)** – Need compact, warm footwear for campsite comfort.
+2. **Skiers (18-35 years old)** – Require adaptable, warm après-ski shoes.
+3. **Cold Climate Residents** – Seek a durable indoor/outdoor slipper alternative.
+
+### Geographic Focus
+- **USA Market:** Targeting suburban outdoor enthusiasts, particularly in mountainous and coastal regions.
+
+## Business Model
+- **Initial Sales Approach:** Direct-to-consumer through a web platform (unstabledesigns.com).
+- **Pricing Strategy:** Estimated retail price of $150 based on market research.
+- **Future Expansion:** Potential partnerships with outdoor retailers and co-branding opportunities.
+
+## Development Process
+1. **Ideation & Research:** Identified market pain points and analyzed competitors.
+2. **Prototype Development:** Experimented with materials, inflation technology, and fit adjustments.
+3. **Manufacturing Coordination:** Engaged with suppliers to source high-tech fabrics and finalized product design.
+4. **User Testing & Feedback:** Conducted interviews and field tests with backpackers and skiers.
+5. **Branding & Marketing:** Established online presence, developed storytelling, and positioned Sammies for launch.
+6. **Final Production & Sales:** Launching the first batch with limited release, iterating based on user feedback.
+
+## Sustainability Commitment
+Sammies aims to integrate eco-friendly materials, explore repairability (e.g., Sashiko stitching), and reduce waste in production.
+
+## Future Roadmap
+- **Iteration & Improvement:** Collecting data from early adopters to refine design.
+- **Retail Expansion:** Introducing Sammies to specialty outdoor retailers.
+- **Product Line Expansion:** Exploring additional footwear solutions for different outdoor needs.
+
+## Team & Roles
+- **Founder & Lead Designer:** Sammy (Ethan C. Sachs)
+- **Manufacturing & Materials Specialists:** Collaborating with industry experts
+- **Marketing & Branding:** Developing storytelling and outreach strategies
+
+## Get Involved
+Sammies is seeking outdoor enthusiasts for beta testing and partnerships. Contact us at [email](mailto:sstrear@gmail.com) or visit [unstabledesigns.com](https://unstabledesigns.com).
+
+---
+
+*This document serves as the official roadmap and process documentation for Sammies. Updated regularly to reflect product and business developments.*
+      `;
+      
+      // Use Marked.js to convert markdown to HTML
+      document.getElementById("doc-container").innerHTML = marked.parse(sammiesDocumentation);
+    </script>
+  </body>
+</html>
