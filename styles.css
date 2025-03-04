@@ -13,8 +13,8 @@ html { overflow-x: hidden; }
   width: 100%;
   padding: 25px 0;
 
-  background-color: #e0e0e0;
-  color: #121212;
+  background-color: #F1F1F3;
+  color: #040222;
 
   font-family: "Inter", sans-serif;
   font-size: 18px;
@@ -41,8 +41,8 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212; /* Dark overall background */
-    color: #e0e0e0;
+    background-color: #151515; /* Dark overall background */
+    color: #F1F1F3;
     overflow-x: hidden;
     padding-top: 10px; /* adjust based on the banner's height */
   }
@@ -70,7 +70,7 @@ body {
     position: absolute;
     height: 2px;
     width: 100%;
-    background-color: #e0e0e0;
+    background-color: #F1F1F3;
     transition: transform 0.3s ease;
   }
   
@@ -103,7 +103,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(18, 18, 18, 0.6);
+    background: 151515;
     z-index: 1;
   }
   
@@ -122,7 +122,7 @@ body {
     color: #fff;
     /* Remove the stroke to eliminate the grey lines */
     /* -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5); */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 4px #151515;
   }
   
   .hero h2 {
@@ -130,21 +130,21 @@ body {
     margin: 24px 0;
     font-weight: 500;
     color: #ccc;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 3px #151515;
   }
   
   .hero p {
     font-size: 20px;
     line-height: 1.5;
     margin: 24px 0;
-    color: #ddd;
+    color: #F1F1F3;
   }
   
   .cta-button {
     display: inline-block;
     padding: 16px 32px;
-    background-color: #e0e0e0;
-    color: #181818;
+    background-color: #F1F1F3;
+    color: #151515;
     text-decoration: none;
     border-radius: 4px;
     font-weight: 500;
@@ -152,20 +152,20 @@ body {
   }
   
   .cta-button:hover {
-    background-color: #ccc;
+    background-color: #F1F1F3;
   }
   
   /* Content Sections */
   .section {
     padding: 100px 0;
-    background-color: #181818; /* Dark section background */
+    background-color: #151515; /* Dark section background */
   }
   
   h2 {
     font-size: 36px;
     margin-bottom: 40px;
     text-align: center;
-    color: #fff;
+    color: #F1F1F3;
   }
   
   h2 a {
@@ -185,7 +185,7 @@ body {
   }
   
   .service-item {
-    background-color: #242424;
+    background-color: #151515;
     padding: 30px;
     border-radius: 8px;
     text-align: center;
@@ -194,12 +194,12 @@ body {
   .service-item h3 {
     font-size: 24px;
     margin-bottom: 16px;
-    color: #fff;
+    color: #F1F1F3;
   }
   
   .service-item p {
     font-size: 16px;
-    color: #bbb;
+    color: #F1F1F3;
   }
   
   /* Projects Section */
@@ -210,7 +210,7 @@ body {
   }
   
   .project-item {
-    background-color: #242424;
+    background-color: #151515;
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -224,18 +224,18 @@ body {
   .project-item h3 {
     font-size: 20px;
     margin: 16px;
-    color: #fff;
+    color: #F1F1F3;
   }
   
   .project-item p {
     font-size: 16px;
     margin: 0 16px 16px;
-    color: #bbb;
+    color: #F1F1F3;
   }
   
   .project-item:hover {
     transform: scale(1.03);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px #151515;
   }
   
   /* About Section */
@@ -245,7 +245,7 @@ body {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
-    color: #ccc;
+    color: #F1F1F3;
   }
   
   /* Contact Section */
@@ -253,7 +253,7 @@ body {
     text-align: center;
     margin-bottom: 40px;
     font-size: 18px;
-    color: #ccc;
+    color: #F1F1F3;
   }
   
   .contact form {
@@ -272,14 +272,14 @@ body {
     font-size: 16px;
     width: 100%;
     box-sizing: border-box;
-    background-color: #121212;
-    color: #eee;
+    background-color: #151515;
+    color: #F1F1F3;
   }
   
   .contact button {
     padding: 16px;
-    background-color: #e0e0e0;
-    color: #121212;
+    background-color: #F1F1F3;
+    color: #151515;
     border: none;
     border-radius: 4px;
     font-size: 16px;
@@ -288,7 +288,7 @@ body {
   }
   
   .contact button:hover {
-    background-color: #ccc;
+    background-color: #F1F1F3;
   }
   
   /* Fade-in & Slide-up Animation */
@@ -326,7 +326,7 @@ body {
     nav ul {
       display: none;
       flex-direction: column;
-      background: rgba(0, 0, 0, 0.9);
+      background: #151515;
       position: absolute;
       top: 60px;
       right: 24px;
@@ -413,8 +413,8 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212;
-    color: #e0e0e0;
+    background-color: #151515;
+    color: #F1F1F3;
     line-height: 1.6;
   }
   
@@ -436,7 +436,7 @@ body {
   
   section h2 {
     font-size: 28px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #F1F1F3;
     padding-bottom: 10px;
     margin-top: 40px;
   }
@@ -523,15 +523,15 @@ body {
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fff; /* change as needed */
+    background-color: #F1F1F3; /* change as needed */
     min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px #151515;
     z-index: 1;
   }
 
   /* Link styles inside the dropdown */
   .dropdown-content a {
-    color: #333;
+    color: #151515;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -539,7 +539,7 @@ body {
 
   /* Change background on hover for dropdown links */
   .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: #F1F1F3;
   }
 
   /* Display the dropdown menu on hover */
@@ -549,7 +549,7 @@ body {
 
   /* Optional: Enhance the styling of the main CTA button */
   .cta-button {
-    background-color: #007BFF;
+    background-color: #5b7cfd;
     border: none;
     color: #fff;
     padding: 12px 24px;
@@ -559,5 +559,32 @@ body {
 
   /* Optional: Button hover effect */
   .cta-button:hover {
-    background-color: #0056b3;
+    background-color: #5660f0;
   }
+
+  /* Audio toggle button styled as a white rounded square */
+  .audio-toggle {
+    position: fixed;               /* Fixed position so it doesn't scroll */
+    top: 70px;                    /* 20px below your banner (assuming the banner is ~50px tall) */
+    right: 20px;                  /* 20px from the right side */
+    background-color: #F1F1F3;       /* White button */
+    border: none;
+    border-radius: 8px;           /* Rounded corners for a rounded square */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1010;                /* Ensure it stays above other content */
+    outline: none;
+  }
+
+  /* Additional styles for the music toggle button to keep it fixed in the viewport */
+  #music-toggle {
+    position: sticky;
+    top: 10px;          /* Adjust as necessary */
+    right: 10px;        /* Adjust as necessary */
+    z-index: 1000;      /* Keep on top of other elements */
+  }
+  
