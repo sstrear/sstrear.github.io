@@ -156,3 +156,14 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize auto rotation
     startAutoRotate();
   });
+
+document.addEventListener("click", function () {
+    const backgroundMusic = document.getElementById("backgroundMusic");
+    if (backgroundMusic.muted) {
+        backgroundMusic.muted = false; // Unmute the audio
+    }
+    backgroundMusic.play().catch(error => {
+        console.error("Playback error:", error);
+    });
+});
+
