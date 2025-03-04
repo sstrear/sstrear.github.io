@@ -90,3 +90,69 @@ function animate() {
 
 // Initialize 3D Viewer on Page Load
 window.onload = init3DViewer;
+
+// Rotating Carousel for Featured Projects
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll("#project-carousel .carousel-slide");
+  let currentSlide = 0;
+  const slideInterval = 5000; // Rotate every 5 seconds
+
+  function nextSlide() {
+    slides[currentSlide].classList.remove("active");
+    // Move to the next slide (wrap around)
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active");
+  }
+
+  // Start the carousel rotation
+  setInterval(nextSlide, slideInterval);
+});
+
+const backgroundMusic = document.getElementById("backgroundMusic");
+function playMusic() {
+  if (backgroundMusic.paused) {
+    backgroundMusic.play().catch(function(err) {
+      console.error("Playback error:", err);
+    });
+  }
+}
+// Listen for user clicks anywhere on the document to trigger playback.
+document.addEventListener("click", playMusic);
+
+document.addEventListener("DOMContentLoaded", function() {
+    const carousel = document.getElementById("project-carousel");
+    const slides = carousel.querySelectorAll(".carousel-slide");
+    let currentSlide = 0;
+    const slideCount = slides.length;
+    const intervalTime = 3000; // Rotate every 3 seconds
+    let autoRotateInterval;
+
+    // Function to display the slide at a given index
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove("active"));
+      slides[index].classList.add("active");
+    }
+
+    // Function to move to the next slide
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slideCount;
+      showSlide(currentSlide);
+    }
+
+    // Start automatic slide rotation
+    function startAutoRotate() {
+      autoRotateInterval = setInterval(nextSlide, intervalTime);
+    }
+
+    // Stop automatic slide rotation
+    function stopAutoRotate() {
+      clearInterval(autoRotateInterval);
+    }
+
+    // Pause the automatic rotation on mouse enter and resume on mouse leave
+    carousel.addEventListener("mouseenter", stopAutoRotate);
+    carousel.addEventListener("mouseleave", startAutoRotate);
+
+    // Initialize auto rotation
+    startAutoRotate();
+  });
