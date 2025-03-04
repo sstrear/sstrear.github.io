@@ -587,4 +587,12 @@ body {
     right: 10px;        /* Adjust as necessary */
     z-index: 1000;      /* Keep on top of other elements */
   }
-  
+
+
+  /* Updated styles to ensure equal left/right spacing */
+  .responsive-image {
+    display: block;
+    margin: 75px auto;
+    max-width: calc(100vw - 150px);
+    height: auto;
+  }
