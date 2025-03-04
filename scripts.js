@@ -104,20 +104,26 @@ document.addEventListener("DOMContentLoaded", function () {
     slides[currentSlide].classList.add("active");
   }
 
+  document.addEventListener("click", function () {
+    const backgroundMusic = document.getElementById("backgroundMusic");
+
+    if (backgroundMusic) {
+        backgroundMusic.muted = false; // Ensure it's unmuted
+        if (backgroundMusic.paused) {
+            backgroundMusic.play().catch(error => {
+                console.error("Playback error:", error);
+            });
+        }
+    } else {
+        console.error("Audio element not found.");
+    }
+});
+
+
   // Start the carousel rotation
   setInterval(nextSlide, slideInterval);
 });
 
-const backgroundMusic = document.getElementById("backgroundMusic");
-function playMusic() {
-  if (backgroundMusic.paused) {
-    backgroundMusic.play().catch(function(err) {
-      console.error("Playback error:", err);
-    });
-  }
-}
-// Listen for user clicks anywhere on the document to trigger playback.
-document.addEventListener("click", playMusic);
 
 document.addEventListener("DOMContentLoaded", function() {
     const carousel = document.getElementById("project-carousel");
@@ -155,15 +161,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Initialize auto rotation
     startAutoRotate();
+
   });
-
-document.addEventListener("click", function () {
-    const backgroundMusic = document.getElementById("backgroundMusic");
-    if (backgroundMusic.muted) {
-        backgroundMusic.muted = false; // Unmute the audio
-    }
-    backgroundMusic.play().catch(error => {
-        console.error("Playback error:", error);
-    });
-});
-
+  
