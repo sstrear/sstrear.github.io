@@ -104,20 +104,27 @@ document.addEventListener("DOMContentLoaded", function () {
     slides[currentSlide].classList.add("active");
   }
 
-  document.addEventListener("click", function () {
-    const backgroundMusic = document.getElementById("backgroundMusic");
+document.addEventListener("DOMContentLoaded", function () {
+  const musicToggle = document.getElementById("music-toggle");
+  const backgroundMusic = document.getElementById("backgroundMusic");
 
-    if (backgroundMusic) {
-        backgroundMusic.muted = false; // Ensure it's unmuted
-        if (backgroundMusic.paused) {
-            backgroundMusic.play().catch(error => {
-                console.error("Playback error:", error);
-            });
-        }
+  musicToggle.addEventListener("click", function () {
+    // Unmute the audio if necessary
+    backgroundMusic.muted = false;
+    
+    if (backgroundMusic.paused) {
+      backgroundMusic.play().then(() => {
+        musicToggle.textContent = "Pause";
+      }).catch(error => {
+        console.error("Playback error:", error);
+      });
     } else {
-        console.error("Audio element not found.");
+      backgroundMusic.pause();
+      musicToggle.textContent = "Play";
     }
+  });
 });
+
 
 
   // Start the carousel rotation
