@@ -6,12 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dragon vs. Rain Clouds</title>
     <style>
-      body { margin: 0; background: #333; }
+      /* Ensure document takes up the full viewport height */
+      html, body {
+        height: 100%;
+      }
+      
+      /* Center the game container using flexbox */
+      body {
+        margin: 0;
+        background: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      /* The game container */
       #gameContainer {
         position: relative;
-        display: inline-block;
         text-align: center;
       }
+  
       canvas {
         background: #222;
         display: block;
@@ -20,6 +34,7 @@
         max-width: 100%;
         height: auto;
       }
+  
       /* Overlaid control buttons */
       #leftButton, #rightButton, #fireButton {
         position: absolute;
@@ -38,9 +53,26 @@
       #fireButton {
         right: 20px;
       }
+  
+      /* Home button fixed on the top-left of the page */
+      #homeButton {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #444;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 20;
+      }
     </style>
   </head>
   <body>
+    <!-- Home button -->
+    <button id="homeButton">Home</button>
     <div id="gameContainer">
       <canvas id="gameCanvas" width="600" height="800"></canvas>
       <button id="leftButton">←</button>
@@ -54,7 +86,7 @@
 
       // Load the dragon image
       const dragonImg = new Image();
-      dragonImg.src = "GreenDragon.png"; // Make sure this file is in the same folder or adjust the path
+      dragonImg.src = "GreenDragon.png"; // Ensure this file is in the same folder or adjust the path
 
       // Game settings
       const playerSpeed = 5;
@@ -133,7 +165,6 @@
       const leftButton = document.getElementById("leftButton");
       const rightButton = document.getElementById("rightButton");
 
-      // For desktop mouse and mobile touch support
       leftButton.addEventListener("mousedown", () => { moveLeft = true; });
       leftButton.addEventListener("mouseup", () => { moveLeft = false; });
       leftButton.addEventListener("touchstart", (e) => { e.preventDefault(); moveLeft = true; });
@@ -143,6 +174,11 @@
       rightButton.addEventListener("mouseup", () => { moveRight = false; });
       rightButton.addEventListener("touchstart", (e) => { e.preventDefault(); moveRight = true; });
       rightButton.addEventListener("touchend", (e) => { e.preventDefault(); moveRight = false; });
+
+      // Updated home button event listener to redirect to index.html
+      document.getElementById("homeButton").addEventListener("click", function() {
+        window.location.href = "index.html";
+      });
 
       // Collision detection (AABB)
       function isColliding(a, b) {
