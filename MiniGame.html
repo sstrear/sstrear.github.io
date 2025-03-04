@@ -1,79 +1,149 @@
-<head>
+<!DOCTYPE html>
+<html>
+  <head>
     <meta charset="UTF-8">
+    <!-- Responsive meta tag for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dragon vs. Rain Clouds</title>
     <style>
       body { margin: 0; background: #333; }
+      #gameContainer {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+      }
       canvas {
         background: #222;
         display: block;
         margin: 0 auto;
         border: 2px solid #555;
+        max-width: 100%;
+        height: auto;
+      }
+      /* Overlaid control buttons */
+      #leftButton, #rightButton, #fireButton {
+        position: absolute;
+        bottom: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        opacity: 0.7;
+        z-index: 10;
+      }
+      #leftButton {
+        left: 20px;
+      }
+      #rightButton {
+        left: 120px;
+      }
+      #fireButton {
+        right: 20px;
       }
     </style>
   </head>
   <body>
-    <canvas id="gameCanvas" width="600" height="800"></canvas>
+    <div id="gameContainer">
+      <canvas id="gameCanvas" width="600" height="800"></canvas>
+      <button id="leftButton">←</button>
+      <button id="rightButton">→</button>
+      <button id="fireButton">FIRE</button>
+    </div>
     <script>
       // Setup canvas and context
       const canvas = document.getElementById("gameCanvas");
       const ctx = canvas.getContext("2d");
-  
+
       // Load the dragon image
       const dragonImg = new Image();
-      dragonImg.src = "GreenDragon.png"; // Make sure this file is in the same folder or adjust path
-  
-      // Game settingsL
+      dragonImg.src = "GreenDragon.png"; // Make sure this file is in the same folder or adjust the path
+
+      // Game settings
       const playerSpeed = 5;
       const fireballSpeed = 7;
       const cloudSpeed = 1.5;
       const raindropSpeed = 4;
       const cloudSpawnInterval = 2000; // milliseconds
       const raindropInterval = 1500;   // milliseconds for each cloud
-  
+
       // Button settings for home and game over screens
       const buttonWidth = 200;
       const buttonHeight = 50;
       const buttonX = canvas.width / 2 - buttonWidth / 2;
       const buttonY = canvas.height / 2 + 50;
-  
+
       // Game states: "home", "playing", "gameover"
       let gameState = "home";
-  
+
       // Game objects
       let player, fireballs, clouds, raindrops, score, gameOver;
-  
+
+      // Movement flags for arrow buttons
+      let moveLeft = false;
+      let moveRight = false;
+
       // Initialize game variables
       function initGame() {
-        player = { x: canvas.width/2 - 25, y: canvas.height - 60, width: 50, height: 50 };
+        player = { x: canvas.width / 2 - 25, y: canvas.height - 60, width: 50, height: 50 };
         fireballs = [];
         clouds = [];
         raindrops = [];
         score = 0;
         gameOver = false;
       }
-  
+
       // Start or restart the game
       function startGame() {
         initGame();
         gameState = "playing";
       }
-  
-      // Controls
+
+      // Desktop keyboard controls
       let keys = {};
       document.addEventListener("keydown", (e) => {
-        // Only process key input if game is playing
         if(gameState !== "playing") return;
         keys[e.key] = true;
-        // Shoot fireball when space is pressed
         if(e.key === " ") {
-          fireballs.push({ x: player.x + player.width/2 - 5, y: player.y, width: 10, height: 20 });
+          fireballs.push({ x: player.x + player.width / 2 - 5, y: player.y, width: 10, height: 20 });
         }
       });
       document.addEventListener("keyup", (e) => {
         if(gameState !== "playing") return;
         keys[e.key] = false;
       });
-  
+
+      // Mobile touch controls for moving the dragon (dragging)
+      canvas.addEventListener("touchmove", function(e) {
+        if(gameState !== "playing") return;
+        e.preventDefault();
+        let touch = e.touches[0];
+        let rect = canvas.getBoundingClientRect();
+        let touchX = touch.clientX - rect.left;
+        player.x = touchX - player.width / 2;
+        if(player.x < 0) player.x = 0;
+        if(player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+      }, {passive: false});
+
+      // FIRE button to shoot a fireball on mobile
+      document.getElementById("fireButton").addEventListener("click", function() {
+        if(gameState === "playing") {
+          fireballs.push({ x: player.x + player.width / 2 - 5, y: player.y, width: 10, height: 20 });
+        }
+      });
+
+      // Arrow button controls for mobile
+      const leftButton = document.getElementById("leftButton");
+      const rightButton = document.getElementById("rightButton");
+
+      // For desktop mouse and mobile touch support
+      leftButton.addEventListener("mousedown", () => { moveLeft = true; });
+      leftButton.addEventListener("mouseup", () => { moveLeft = false; });
+      leftButton.addEventListener("touchstart", (e) => { e.preventDefault(); moveLeft = true; });
+      leftButton.addEventListener("touchend", (e) => { e.preventDefault(); moveLeft = false; });
+
+      rightButton.addEventListener("mousedown", () => { moveRight = true; });
+      rightButton.addEventListener("mouseup", () => { moveRight = false; });
+      rightButton.addEventListener("touchstart", (e) => { e.preventDefault(); moveRight = true; });
+      rightButton.addEventListener("touchend", (e) => { e.preventDefault(); moveRight = false; });
+
       // Collision detection (AABB)
       function isColliding(a, b) {
         return (
@@ -83,10 +153,9 @@
           a.y + a.height > b.y
         );
       }
-  
+
       // Spawn clouds at random x positions at the top
       function spawnCloud() {
-        // Only spawn clouds during gameplay
         if(gameState !== "playing") return;
         let cloud = {
           x: Math.random() * (canvas.width - 60),
@@ -98,7 +167,7 @@
         clouds.push(cloud);
       }
       setInterval(spawnCloud, cloudSpawnInterval);
-  
+
       // Main game loop
       function gameLoop() {
         requestAnimationFrame(gameLoop);
@@ -114,28 +183,27 @@
           drawGameOver();
         }
       }
-  
+
       // Update game objects
       function update() {
-        // Player movement
-        if(keys["ArrowLeft"] && player.x > 0) {
+        // Desktop keyboard and arrow button movement
+        if((keys["ArrowLeft"] || moveLeft) && player.x > 0) {
           player.x -= playerSpeed;
         }
-        if(keys["ArrowRight"] && player.x + player.width < canvas.width) {
+        if((keys["ArrowRight"] || moveRight) && player.x + player.width < canvas.width) {
           player.x += playerSpeed;
         }
-  
+
         // Update fireballs
         fireballs = fireballs.filter(f => {
           f.y -= fireballSpeed;
           return f.y + f.height > 0;
         });
-  
-        // Update clouds and generate raindrops from each cloud at intervals
+
+        // Update clouds and spawn raindrops
         clouds.forEach(cloud => {
           cloud.y += cloudSpeed;
           if(Date.now() - cloud.lastRain > raindropInterval) {
-            // Each cloud produces a raindrop from somewhere within its width
             raindrops.push({
               x: cloud.x + Math.random() * (cloud.width - 5),
               y: cloud.y + cloud.height,
@@ -145,27 +213,25 @@
             cloud.lastRain = Date.now();
           }
         });
-        // Remove clouds that are off screen
         clouds = clouds.filter(cloud => cloud.y < canvas.height);
-  
+
         // Update raindrops
         raindrops = raindrops.filter(r => {
           r.y += raindropSpeed;
           return r.y < canvas.height;
         });
-  
+
         // Check collisions between fireballs and clouds
         fireballs.forEach((fireball, fi) => {
           clouds.forEach((cloud, ci) => {
             if(isColliding(fireball, cloud)){
-              // Remove the fireball and cloud on collision
               fireballs.splice(fi, 1);
               clouds.splice(ci, 1);
               score += 10;
             }
           });
         });
-  
+
         // Check collisions between raindrops and the player
         raindrops.forEach(r => {
           if(isColliding(r, player)){
@@ -173,26 +239,25 @@
           }
         });
       }
-  
+
       // Draw game elements on the canvas
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+
         // Draw player (dragon)
         if (dragonImg.complete && dragonImg.naturalWidth !== 0) {
           ctx.drawImage(dragonImg, player.x, player.y, player.width, player.height);
         } else {
-          // Fallback to a rectangle if the image hasn't loaded yet
           ctx.fillStyle = "green";
           ctx.fillRect(player.x, player.y, player.width, player.height);
         }
-  
+
         // Draw fireballs
         ctx.fillStyle = "orange";
         fireballs.forEach(f => {
           ctx.fillRect(f.x, f.y, f.width, f.height);
         });
-  
+
         // Draw clouds
         ctx.fillStyle = "lightgray";
         clouds.forEach(cloud => {
@@ -203,81 +268,78 @@
           ctx.closePath();
           ctx.fill();
         });
-  
+
         // Draw raindrops
         ctx.fillStyle = "blue";
         raindrops.forEach(r => {
           ctx.fillRect(r.x, r.y, r.width, r.height);
         });
-  
+
         // Draw score
         ctx.fillStyle = "white";
         ctx.font = "20px Arial";
         ctx.fillText("Score: " + score, 10, 30);
       }
-  
+
       // Draw the home screen with title, rules, and a Start button
       function drawHome() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "white";
         ctx.font = "50px Arial";
         ctx.textAlign = "center";
-        ctx.fillText("Dragon vs. Rain Clouds", canvas.width/2, canvas.height/2 - 100);
+        ctx.fillText("Dragon vs. Rain Clouds", canvas.width / 2, canvas.height / 2 - 100);
         
         ctx.font = "20px Arial";
-        ctx.fillText("Use LEFT/RIGHT arrows to move", canvas.width/2, canvas.height/2 - 50);
-        ctx.fillText("Press SPACE to shoot fireballs", canvas.width/2, canvas.height/2 - 20);
-        ctx.fillText("Avoid raindrops from the clouds", canvas.width/2, canvas.height/2 + 10);
+        ctx.fillText("Drag finger or use arrows to move", canvas.width / 2, canvas.height / 2 - 50);
+        ctx.fillText("Tap FIRE to shoot", canvas.width / 2, canvas.height / 2 - 20);
+        ctx.fillText("Avoid raindrops from the clouds", canvas.width / 2, canvas.height / 2 + 10);
         
         // Draw Start button
         ctx.fillStyle = "gray";
         ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
         ctx.fillStyle = "white";
         ctx.font = "30px Arial";
-        ctx.fillText("Start Game", canvas.width/2, buttonY + 33);
+        ctx.fillText("Start Game", canvas.width / 2, buttonY + 33);
       }
-  
-      // Draw game over screen with score and a Restart button
+
+      // Draw the game over screen with score and a Restart button
       function drawGameOver() {
-        // Dim the background
         ctx.fillStyle = "rgba(0,0,0,0.5)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
         ctx.fillStyle = "white";
         ctx.font = "50px Arial";
         ctx.textAlign = "center";
-        ctx.fillText("Game Over", canvas.width/2, canvas.height/2 - 60);
+        ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2 - 60);
         ctx.font = "30px Arial";
-        ctx.fillText("Score: " + score, canvas.width/2, canvas.height/2 - 20);
+        ctx.fillText("Score: " + score, canvas.width / 2, canvas.height / 2 - 20);
         
         // Draw Restart button
         ctx.fillStyle = "gray";
         ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
         ctx.fillStyle = "white";
         ctx.font = "30px Arial";
-        ctx.fillText("Restart Game", canvas.width/2, buttonY + 33);
+        ctx.fillText("Restart Game", canvas.width / 2, buttonY + 33);
       }
-  
+
       // Handle canvas click events for buttons on home and game over screens
       canvas.addEventListener("click", function(e) {
         const rect = canvas.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         if(gameState === "home") {
-          // Check if click is inside the Start button area
           if(x >= buttonX && x <= buttonX + buttonWidth && y >= buttonY && y <= buttonY + buttonHeight) {
             startGame();
           }
         } else if(gameState === "gameover") {
-          // Check if click is inside the Restart button area
           if(x >= buttonX && x <= buttonX + buttonWidth && y >= buttonY && y <= buttonY + buttonHeight) {
             startGame();
           }
         }
       });
-  
+
       // Start the game loop
       gameLoop();
     </script>
   </body>
-  </html>
+</html>
