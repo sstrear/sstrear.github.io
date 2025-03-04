@@ -95,7 +95,7 @@ window.onload = init3DViewer;
 document.addEventListener("DOMContentLoaded", function () {
   const slides = document.querySelectorAll("#project-carousel .carousel-slide");
   let currentSlide = 0;
-  const slideInterval = 5000; // Rotate every 5 seconds
+  const slideInterval = 15000; // Rotate every 5 seconds
 
   function nextSlide() {
     slides[currentSlide].classList.remove("active");
