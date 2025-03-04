@@ -10,6 +10,20 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Basic styles for the carousel */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+    }
+    .carousel-slide {
+      display: none;
+      text-align: center;
+    }
+    .carousel-slide.active {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -22,7 +36,7 @@
   <section class="services fade-in" id="services">
     <div class="bar">
       <span class="bar_content">   
-        New weekly content! ~ Song of the week: "Drift Like A Cloud, Flow Like Water" by INZO ~ Mini Game: Dragon vs. Rain Clouds
+        🚧 This webpage is under construction! | Song of the Week: "Drift Like A Cloud, Flow Like Water" by INZO | Mini-Game: Fire vs. Water 🎮
       </span>
     </div>
   </section>
@@ -36,7 +50,16 @@
         <p>
           Engineer | Innovator | Entrepreneur | Product Designer
         </p>
-        <a href="Resume.html" class="cta-button">Resume Here</a>
+        <!-- Updated Hover Dropdown Button Section -->
+        <div class="dropdown">
+          <button class="cta-button">Explore</button>
+          <div class="dropdown-content">
+              <a href="#about">About</a>
+              <a href="#projects">Featured Projects</a>
+              <a href="Resume.html">Resume</a>
+              <a href="MiniGame.html">Mini-Game</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -57,6 +80,73 @@
   <section class="projects fade-in" id="projects">
     <div class="container">
       <h2>Featured Projects</h2>
+      <div id="project-carousel" class="carousel">
+        <!-- Slide 1: JPG Project -->
+        <div class="carousel-slide active" data-type="jpg">
+          <h3>JPG Project: Masegoposter</h3>
+          <img src="Masegoposter.jpg" alt="Masegoposter" style="width:300px; height:auto;" />
+        </div>
+
+        <!-- Slide 2: JPG Project -->
+        <div class="carousel-slide" data-type="jpg">
+          <h3>JPG Project: Mediation</h3>
+          <img src="Mediation.jpg" alt="Mediation" style="width:300px; height:auto;" />
+        </div>
+
+        <!-- Slide 3: JPG Project -->
+        <div class="carousel-slide" data-type="jpg">
+          <h3>JPG Project: Questions</h3>
+          <img src="Questions.jpg" alt="Questions" style="width:300px; height:auto;" />
+        </div>
+
+        <!-- Slide 5: GLB Model -->
+        <div class="carousel-slide" data-type="glb">
+          <head>
+            <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+          </head>
+          <body>
+            <model-viewer 
+                src="SHOE.glb" 
+                alt="Project 2 3D Model" 
+                auto-rotate 
+                camera-controls 
+                ar
+                style="width: 600px; height: 600px;">
+            </model-viewer>
+          </div>
+
+        <div class="carousel-slide" data-type="jpg">
+          <head>
+            <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+          </head>
+          <body>
+              <model-viewer 
+                  src="BoltNut.glb" 
+                  alt="Project 2 3D Model" 
+                  auto-rotate 
+                  camera-controls 
+                  ar
+                  style="width: 600px; height: 600px;">
+              </model-viewer>
+          </body>
+        </div>
+
+        <!-- Slide 6: GLB Model -->
+      <div class="carousel-slide" data-type="jpg">
+        <head>
+          <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+        </head>
+        <body>
+            <model-viewer 
+                src="WineRender.glb" 
+                alt="Project 2 3D Model" 
+                auto-rotate 
+                camera-controls 
+                ar
+                style="width: 600px; height: 600px;">
+            </model-viewer>
+          </div>
+      </div>
     </div>
   </section>
 
@@ -64,18 +154,50 @@
 
   <script src="scripts.js"></script>
 
+  <!-- Auto-Rotating Carousel Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const carousel = document.getElementById("project-carousel");
+      const slides = carousel.querySelectorAll(".carousel-slide");
+      let currentSlide = 0;
+      const slideCount = slides.length;
+      const intervalTime = 5500; // Rotate every 3 seconds
+      let autoRotateInterval;
+
+      // Function to display the slide at a given index
+      function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+      }
+
+      // Function to move to the next slide
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        showSlide(currentSlide);
+      }
+
+      // Start automatic slide rotation
+      function startAutoRotate() {
+        autoRotateInterval = setInterval(nextSlide, intervalTime);
+      }
+
+      // Stop automatic slide rotation
+      function stopAutoRotate() {
+        clearInterval(autoRotateInterval);
+      }
+
+      // Pause the automatic rotation on mouse enter and resume on mouse leave
+      carousel.addEventListener("mouseenter", stopAutoRotate);
+      carousel.addEventListener("mouseleave", startAutoRotate);
+
+      // Initialize auto rotation
+      startAutoRotate();
+    });
+  </script>
+
   <!-- Script to trigger audio playback on user interaction if autoplay fails -->
   <script>
-    const backgroundMusic = document.getElementById("backgroundMusic");
-    function playMusic() {
-      if (backgroundMusic.paused) {
-        backgroundMusic.play().catch(function(err) {
-          console.error("Playback error:", err);
-        });
-      }
-    }
-    // Listen for user clicks anywhere on the document to trigger playback.
-    document.addEventListener("click", playMusic);
+
   </script>
 
 </body>
