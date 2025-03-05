@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sammy Strear</title>
+  <!-- Google Fonts: Inter -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+
+  </style>
+</head>
+<body>
+  <!-- Audio Element & Toggle Button -->
+  <audio id="backgroundMusic" autoplay loop preload="auto" muted>
+    <source src="Jack Johnson - 01. Upside Down.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <button id="music-toggle" class="audio-toggle">Play</button>
+
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-columns">
+      <div class="hero-content">
+        <h1>Art Samples</h1>
+        <p>
+          Engineer | Innovator | Entrepreneur | Product Designer
+        </p>
+        <!-- Dropdown Button -->
+        <div class="dropdown">
+          <button class="cta-button">Explore</button>
+          <div class="dropdown-content">
+            <a href="index.html">Home</a>
+            <a href="ProductSamples.html">Product Samples</a>
+            <a href="mediation.html">Mediation</a>
+            <a href="questions.html">Questions</a>
+            <a href="masego.html">Masego</a>
+      </div>
+    </div>
+  </section>
+
+ <!-- Featured Projects Section -->
+  <section class="projects fade-in" id="projects">
+    <div class="container">
+      <h2>Arts</h2>
+      <!-- Static list of project titles -->
+      <div id="project-titles" class="project-titles">
+        <span class="project-title active" data-index="0">"Masego"</span>
+        <span class="project-title" data-index="1">"Mediation"</span>
+        <span class="project-title" data-index="2">"Questions"</span>
+      </div>
+    </div>
+    <!-- Carousel -->
+    <div id="project-carousel" class="carousel">
+      <!-- Slide 1 -->
+      <div class="carousel-slide active" data-type="jpg">
+        <h3>"Masego" - A Sonic and Visual Journey</h3>
+        <img src="MasegoPoster.jpg" alt="Masego" style="width:300px; height:auto;" />
+        <p>
+          This artwork is a dynamic fusion of music and motion, embodying the essence of Masego, a multi-instrumentalist known for his genre-blending sound and fluid artistry. The design plays with contrast, motion, and fragmentation, mirroring the rhythmic complexity and improvisational nature of his music.
+          The black-to-white gradient suggests a transition, perhaps from the unknown to clarity—symbolic of Masego’s fusion of jazz, R&B, and electronic elements that defy boundaries. The streaked background evokes movement, almost as if time itself is stretching, an allusion to the timeless quality of his melodies.
+          At the heart of the composition, Masego is deconstructed yet unified, with vertical bars slicing through his image. These bars resemble equalizer visuals, reinforcing the sonic themes and emphasizing his presence as a musician. The selective transparency and layering create depth, making the viewer feel as though they are looking through windows of sound and memory.
+          The handwritten-style typography adds a personal, intimate touch, reminiscent of jazz signatures and classic album covers. Dated 9/18/2018, this moment is immortalized—perhaps marking a performance, an album release, or a personal milestone in Masego’s career.
+          This piece is more than an image—it’s a visual representation of sound in motion, a celebration of rhythm, artistry, and the ever-evolving creative journey of an artist who refuses to be confined.
+        </p>
+      </div>
+      <!-- Slide 2 -->
+      <div class="carousel-slide" data-type="jpg">
+        <h3>"Mediation" – A Reflection on Perspective</h3>
+        <img src="Mediation.jpg" alt="Mediation" style="width:300px; height:auto;" />
+        <p>
+          "Mediation" is an exploration of the tension between perception and understanding, a visual dialogue between conflicting identities, internalized emotions, and external projections. The composition is fractured yet symmetrical, mirroring the nature of mediation itself—a process of balance, negotiation, and self-exploration.
+          At its core, two mirrored faces stare forward, their expressions heavy, almost frozen in contemplation. They are caught in a liminal space, neither fully connected nor completely apart, representing the struggle of seeing oneself clearly amid external forces and internal conflicts. The dark, high-contrast aesthetic adds weight to this concept, stripping away unnecessary detail and focusing the viewer on raw emotion.
+          The hand-drawn elements—a boxed eye, a circled mouth—serve as focal points, marking areas of distortion and emphasis. They act as symbols of perception: the eye boxed in, as if confined to a limited viewpoint, and the mouth circled, suggesting speech that is either censored, misunderstood, or waiting to be released. Between the two faces, a spray of fragmented light connects them, symbolizing a moment of exchange, an attempt to bridge perspectives.
+          The black void above is intentional—it represents the unknown, the unsaid, the subconscious weight that looms over mediation. Silence can be just as powerful as words, and in this piece, the vast emptiness creates an eerie, meditative pause, forcing the viewer to engage with the figures on a deeper level.
+          At its core, Mediation is about understanding—about the space between two perspectives, the process of deconstructing and rebuilding meaning.
+        </p>
+      </div>
+      <!-- Slide 3 -->
+      <div class="carousel-slide" data-type="jpg">
+        <h3>"Questions" - A Visual Interpretation of Chanel</h3>
+        <img src="Questions.jpg" alt="Questions" style="width:300px; height:auto;" />
+        <p>
+          This piece is a visual interpretation of my childhood friend, Chanel—someone who isn't always easy to read but carries an immense depth beneath the surface. At first glance, the composition is fragmented, abstract, and layered with obscurity, much like how Chanel presents herself to the world. There's a certain mystery in her presence, a guarded nature that doesn't immediately reveal its meaning.
+          The dark silhouette, almost hidden within the composition, mirrors the way Chanel exists in a space—observant, thoughtful, and enigmatic. She doesn't give everything away at once, but once you take the time to understand her, you begin to see the full picture. The textured upper half, blended with deep earthy browns and muted shadows, represents the complexity of her personality—layers upon layers of experiences, emotions, and guarded thoughts.
+          Moving downward, the abstract distortion transitions into a lighter, fragmented space, symbolizing the clarity that comes when you begin to truly understand her. This piece is called "Questions" because, at first, it is a puzzle—a series of unspoken thoughts and quiet mysteries.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="spacer"></section>
+
+  <!-- Optional: Container for Three.js 3D viewer -->
+  <div id="shoe-container"></div>
+
+  <!-- Load JavaScript as a module -->
+  <script type="module" src="scripts.js"></script>
+</body>
+</html>
