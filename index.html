@@ -10,36 +10,25 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Add the model-viewer library -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
-    /* Basic styles for the carousel */
-    .carousel {
-      position: relative;
-      overflow: hidden;
-    }
-    .carousel-slide {
-      display: none;
-      text-align: center;
-    }
-    .carousel-slide.active {
-      display: block;
-    }
+
   </style>
 </head>
 <body>
-
-  <!-- Audio element moved into the body with an id and preload attribute -->
-<audio id="backgroundMusic" autoplay loop preload="auto" muted>
-  <source src="Inzo - Drift Like A Cloud, Flow Like Water.mp3" type="audio/mpeg" />
-  Your browser does not support the audio element.
-</audio>
-
-<button id="music-toggle" class="audio-toggle">Play</button>
+  <!-- Audio Element & Toggle Button -->
+  <audio id="backgroundMusic" autoplay loop preload="auto" muted>
+    <source src="Jack Johnson - 01. Upside Down.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
 
 
+  <!-- Under Construction Banner -->
   <section class="services fade-in" id="services">
     <div class="bar">
-      <span class="bar_content">   
-        🚧 This webpage is under construction! | Song of the Week: "Drift Like A Cloud, Flow Like Water" by INZO | Mini-Game: Fire vs. Water 🎮
+      <span class="bar_content">
+        🚧 This webpage is under construction! | Song of the Week: "Upside Down" by Jack Johnson | Mini-Game: Fire vs. Water 🎮
       </span>
     </div>
   </section>
@@ -53,206 +42,28 @@
         <p>
           Engineer | Innovator | Entrepreneur | Product Designer
         </p>
-        <!-- Updated Hover Dropdown Button Section -->
+        <!-- Dropdown Button -->
         <div class="dropdown">
           <button class="cta-button">Explore</button>
           <div class="dropdown-content">
-              <a href="#about">About</a>
-              <a href="#projects">Featured Projects</a>
-              <a href="resume.html">Resume</a>
-              <a href="MiniGame.html">Mini-Game</a>
+            <a href="#about">About</a>
+            <a href="ArtSamples.html">Art Samples</a>
+            <a href="ProductSamples.html">Product Samples</a>
+            <a href="resume.html">Resume</a>
+            <a href="MiniGame.html">Mini-Game</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-  
+
   <!-- About Section -->
   <section class="about fade-in" id="about">
     <div class="container">
-      <h2>About Me</h2>
-      <p>
-        I thrive at the intersection of creativity, engineering, and business, bringing ideas to life through experimentation, iteration, and problem-solving. Whether designing outdoor gear, developing AI-powered tools, or working in aerospace, my entrepreneurial drive pushes me to build, test, and refine innovative solutions.
-      </p>
-      <img src="ME.jpg" alt="ME" class="responsive-image" />
     </div>
   </section>
 
-
-
-  <section class="spacer"></section>
-
-  <!-- Projects Section -->
-  <section class="projects fade-in" id="projects">
-    <div class="container">
-      <h2>Featured Projects</h2>
-      <div id="project-carousel" class="carousel">
-        <!-- Slide 1: JPG Project -->
-        <div class="carousel-slide active" data-type="jpg">
-          <h3> "Masego" - A Sonic and Visual Journey</h3>
-          <img src="MasegoPoster.jpg" alt="Masego" style="width:300px; height:auto;" />
-          <p>
-           
-This artwork is a dynamic fusion of music and motion, embodying the essence of Masego, a multi-instrumentalist known for his genre-blending sound and fluid artistry. The design plays with contrast, motion, and fragmentation, mirroring the rhythmic complexity and improvisational nature of his music.
-
-The black-to-white gradient suggests a transition, perhaps from the unknown to clarity—symbolic of Masego’s fusion of jazz, R&B, and electronic elements that defy boundaries. The streaked background evokes movement, almost as if time itself is stretching, an allusion to the timeless quality of his melodies.
-
-At the heart of the composition, Masego is deconstructed yet unified, with vertical bars slicing through his image. These bars resemble equalizer visuals, reinforcing the sonic themes and emphasizing his presence as a musician. The selective transparency and layering create depth, making the viewer feel as though they are looking through windows of sound and memory.
-
-The handwritten-style typography adds a personal, intimate touch, reminiscent of jazz signatures and classic album covers. Dated 9/18/2018, this moment is immortalized—perhaps marking a performance, an album release, or a personal milestone in Masego’s career.
-
-This piece is more than an image—it’s a visual representation of sound in motion, a celebration of rhythm, artistry, and the ever-evolving creative journey of an artist who refuses to be confined.
-          </p>
-        </div>
-
-        <!-- Slide 2: JPG Project -->
-        <div class="carousel-slide" data-type="jpg">
-          <h3>"Mediation" – A Reflection on Perspective</h3>
-          <img src="Mediation.jpg" alt="Mediation" style="width:300px; height:auto;" />
-          <p>
-            "Mediation" is an exploration of the tension between perception and understanding, a visual dialogue between conflicting identities, internalized emotions, and external projections. The composition is fractured yet symmetrical, mirroring the nature of mediation itself—a process of balance, negotiation, and self-exploration.
-            
-            At the core of the piece, two mirrored faces stare forward, their expressions heavy, almost frozen in contemplation. They are caught in a liminal space, neither fully connected nor completely apart, representing the struggle of seeing oneself clearly amid external forces and internal conflicts. The dark, high-contrast aesthetic adds weight to this concept, stripping away unnecessary detail and focusing the viewer on raw emotion.
-            
-            The hand-drawn elements—a boxed eye, a circled mouth—serve as focal points, marking areas of distortion and emphasis. They act as symbols of perception: the eye boxed in, as if confined to a limited viewpoint, and the mouth circled, suggesting speech that is either censored, misunderstood, or waiting to be released. Between the two faces, a spray of fragmented light connects them, symbolizing a moment of exchange, an attempt to bridge perspectives.
-            
-            The black void above is intentional—it represents the unknown, the unsaid, the subconscious weight that looms over mediation, whether between two people or within oneself. Silence can be just as powerful as words, and in this piece, the vast emptiness creates an eerie, meditative pause, forcing the viewer to engage with the figures on a deeper level.
-            
-            At its core, Mediation is about understanding—about the space between two perspectives, the process of deconstructing and rebuilding meaning. It invites the viewer to sit in discomfort, to examine their own inner dialogues, and to consider what it means to truly see and be seen.</p>
-        </div>
-
-        <!-- Slide 3: JPG Project -->
-        <div class="carousel-slide" data-type="jpg">
-          <h3>"Questions" - A Visual Interpretation of Chanel</h3>
-          <img src="Questions.jpg" alt="Questions" style="width:300px; height:auto;" />
-          </p> This piece is a visual interpretation of my childhood friend, Chanel—someone who isn't always easy to read but carries an immense depth beneath the surface. At first glance, the composition is fragmented, abstract, and layered with obscurity, much like how Chanel presents herself to the world. There's a certain mystery in her presence, a guarded nature that doesn't immediately reveal its meaning.
-
-          The dark silhouette, almost hidden within the composition, mirrors the way Chanel exists in a space—observant, thoughtful, and enigmatic. She doesn't give everything away at once, but once you take the time to understand her, you begin to see the full picture. The textured upper half, blended with deep earthy browns and muted shadows, represents the complexity of her personality—layers upon layers of experiences, emotions, and guarded thoughts.
-          
-          Moving downward, the abstract distortion transitions into a lighter, fragmented space, symbolizing the clarity that comes when you begin to truly understand her. It's a process—like breaking through static, pushing past the noise, and tuning into the deeper frequencies of who she is. The jagged, fading edges represent those moments of revelation, when her depth suddenly becomes clear, like deciphering an encrypted message.
-          
-          This piece is called "Questions" because that's what knowing Chanel is like—at first, it's a puzzle, a series of unspoken thoughts and quiet mysteries. But when you sit with it, when you listen instead of trying to force an answer, you realize that there's a whole world beneath the surface.
-          
-          It's a tribute to the kind of friendship that requires patience, understanding, and trust—a friendship that, once unlocked, is one of the most valuable and profound things in the world. 
-        </p>
-        </div>
-
-        <!-- Slide 5: GLB Model -->
-        <div class="carousel-slide" data-type="glb">
-          <head>
-            <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
-          </head>
-          <body>
-            <h3>Sammies – The Ultimate Packable Adventure Shoe</h3>
-            <model-viewer 
-                src="SHOE.glb" 
-                alt="Project 2 3D Model" 
-                auto-rotate 
-                camera-controls 
-                ar
-                style="width: 600px; height: 600px;">
-            </model-viewer>
-            <p>
-              
-
-Sammies are designed for outdoor explorers who refuse to compromise on comfort, performance, or portability. Engineered with lightweight, waterproof materials and an innovative collapsible sole, these shoes adapt to any environment—whether you're backpacking through rugged terrain, unwinding at camp, or navigating snowy après-ski moments. The flexible design allows for easy packing without sacrificing durability, while the insulated interior keeps your feet warm and dry in any condition. Sammies redefine adventure footwear by blending functionality, comfort, and modern aesthetics into a shoe that's as versatile as your journey.
-            </p>
-          </div>
-
-        <div class="carousel-slide" data-type="jpg">
-          <head>
-            <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
-          </head>
-          <h3>Dual-Threaded Bolt – A SolidWorks Experiment in Technical CAD</h3>
-          <body>
-              <model-viewer 
-                  src="BoltNut.glb" 
-                  alt="Project 2 3D Model" 
-                  auto-rotate 
-                  camera-controls 
-                  ar
-                  style="width: 600px; height: 600px;">
-              </model-viewer>
-              <p>
-                
-
-This project showcases an advanced SolidWorks design of a dual-threaded bolt, demonstrating precision engineering and technical CAD expertise. The bolt features two interwoven thread patterns, a complex geometry that challenges conventional machining and additive manufacturing techniques. This experiment highlights proficiency in parametric modeling, thread customization, and mechanical design principles, pushing the boundaries of standard fastener construction. By exploring the intricacies of multi-threaded components, this SolidWorks model serves as both a technical showcase and a conceptual exploration of non-traditional fastening solutions.
-              </p>
-          </body>
-        </div>
-
-        <!-- Slide 6: GLB Model -->
-      <div class="carousel-slide" data-type="jpg">
-        <head>
-          <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
-        </head>
-        <h3>Glass Bottle Insert – Optimized Airflow & Fluid Sealing</h3>
-        <body>
-            <model-viewer 
-                src="WineRender.glb" 
-                alt="Project 2 3D Model" 
-                auto-rotate 
-                camera-controls 
-                ar
-                style="width: 600px; height: 600px;">
-            </model-viewer>
-          </div>
-          <p>
-This precision-engineered glass bottle insert is designed to enhance fluid control through optimized airflow and airtight sealing. By incorporating a carefully structured internal channel system, the insert regulates the passage of liquid, ensuring smooth, controlled pouring without unwanted spills or air bubbles. The design prioritizes functionality, durability, and ease of use, making it an ideal solution for preserving the integrity of beverages, oils, or other liquids. This project demonstrates technical CAD expertise in fluid dynamics, seal optimization, and precision manufacturing, pushing the boundaries of bottle design for improved user experience.
-          </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="spacer"></section>
-
-  <script src="scripts.js"></script>
-
-  <!-- Auto-Rotating Carousel Script -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const carousel = document.getElementById("project-carousel");
-      const slides = carousel.querySelectorAll(".carousel-slide");
-      let currentSlide = 0;
-      const slideCount = slides.length;
-      const intervalTime = 35000; // Rotate every 35 seconds
-      let autoRotateInterval;
-
-      // Function to display the slide at a given index
-      function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove("active"));
-        slides[index].classList.add("active");
-      }
-
-      // Function to move to the next slide
-      function nextSlide() {
-        currentSlide = (currentSlide + 1) % slideCount;
-        showSlide(currentSlide);
-      }
-
-      // Start automatic slide rotation
-      function startAutoRotate() {
-        autoRotateInterval = setInterval(nextSlide, intervalTime);
-      }
-
-      // Stop automatic slide rotation
-      function stopAutoRotate() {
-        clearInterval(autoRotateInterval);
-      }
-
-      // Pause the automatic rotation on mouse enter and resume on mouse leave
-      carousel.addEventListener("mouseenter", stopAutoRotate);
-      carousel.addEventListener("mouseleave", startAutoRotate);
-
-      // Initialize auto rotation
-      startAutoRotate();
-    });
-  </script>
-
-  <!-- Script to trigger audio playback on user interaction if autoplay fails -->
-  <script>
-
-  </script>
-
+  <!-- Load JavaScript as a module -->
+  <script type="module" src="scripts.js"></script>
 </body>
 </html>
