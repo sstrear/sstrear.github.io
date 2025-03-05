@@ -1,598 +1,583 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body,
-html { overflow-x: hidden; }
+html {
+  overflow-x: hidden;
+}
 
 .bar {
   position: fixed;
   top: 0;
   left: 0;
-
   width: 100%;
   padding: 25px 0;
-
   background-color: #F1F1F3;
   color: #040222;
-
   font-family: "Inter", sans-serif;
   font-size: 18px;
   overflow: hidden;
 }
 
 .bar_content {
-  display: block; /* Important to give the content a width */
-
+  display: block;
   width: 100%;
-  transform: translateX(100%); /* Animation start out of the screen */
-  white-space: nowrap; /* Ensures the text stays on one line regardless of screen size */
-
-  /* Add the animation */
-  animation: move 30s linear infinite /* infinite make reapeat the animation indefinitely */;
+  transform: translateX(100%);
+  white-space: nowrap;
+  animation: move 30s linear infinite;
 }
 
-/* Create the animation */
 @keyframes move {
-  to { transform: translateX(-100%); }
+  to {
+    transform: translateX(-100%);
+  }
 }
+
 /* Global Styles */
 body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #151515; /* Dark overall background */
-    color: #F1F1F3;
-    overflow-x: hidden;
-    padding-top: 10px; /* adjust based on the banner's height */
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 48px;
-  }
-  
-  
-  /* Mobile Menu Toggle */
-  .mobile-menu-toggle {
-    display: none;
-    width: 30px;
-    height: 30px;
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .mobile-menu-toggle .hamburger,
-  .mobile-menu-toggle .hamburger::before,
-  .mobile-menu-toggle .hamburger::after {
-    content: "";
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    background-color: #F1F1F3;
-    transition: transform 0.3s ease;
-  }
-  
-  .mobile-menu-toggle .hamburger {
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .mobile-menu-toggle .hamburger::before {
-    top: -8px;
-  }
-  
-  .mobile-menu-toggle .hamburger::after {
-    top: 8px;
-  }
-  
-  /* Hero Section */
-  .hero {
-    position: relative;
-    display: flex;
-    align-items: center;
-    min-height: 100vh;
-    background: url('../images/hero-image.jpg') no-repeat center center/cover; /* Replace with your high-quality image */
-    padding: 0 48px;
-  }
-  
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 151515;
-    z-index: 1;
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 600px;
-    text-align: left;
-  }
-  
-  .hero h1 {
-    font-size: 72px;
-    margin: 0;
-    font-weight: 700;
-    line-height: 1.1;
-    color: #fff;
-    /* Remove the stroke to eliminate the grey lines */
-    /* -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5); */
-    text-shadow: 2px 2px 4px #151515;
-  }
-  
-  .hero h2 {
-    font-size: 32px;
-    margin: 24px 0;
-    font-weight: 500;
-    color: #ccc;
-    text-shadow: 1px 1px 3px #151515;
-  }
-  
-  .hero p {
-    font-size: 20px;
-    line-height: 1.5;
-    margin: 24px 0;
-    color: #F1F1F3;
-  }
-  
-  .cta-button {
-    display: inline-block;
-    padding: 16px 32px;
-    background-color: #F1F1F3;
-    color: #151515;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    background-color: #F1F1F3;
-  }
-  
-  /* Content Sections */
-  .section {
-    padding: 100px 0;
-    background-color: #151515; /* Dark section background */
-  }
-  
-  h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
-    text-align: center;
-    color: #F1F1F3;
-  }
-  
-  h2 a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  h2 a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Services Section */
-  .services-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-  }
-  
-  .service-item {
-    background-color: #151515;
-    padding: 30px;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .service-item h3 {
-    font-size: 24px;
-    margin-bottom: 16px;
-    color: #F1F1F3;
-  }
-  
-  .service-item p {
-    font-size: 16px;
-    color: #F1F1F3;
-  }
-  
-  /* Projects Section */
-  .projects-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-  }
-  
-  .project-item {
-    background-color: #151515;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .project-item img {
-    width: 100%;
-    display: block;
-  }
-  
-  .project-item h3 {
-    font-size: 20px;
-    margin: 16px;
-    color: #F1F1F3;
-  }
-  
-  .project-item p {
-    font-size: 16px;
-    margin: 0 16px 16px;
-    color: #F1F1F3;
-  }
-  
-  .project-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 15px #151515;
-  }
-  
-  /* About Section */
-  .about p {
-    font-size: 18px;
-    line-height: 1.6;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    color: #F1F1F3;
-  }
-  
-  /* Contact Section */
-  .contact p {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 18px;
-    color: #F1F1F3;
-  }
-  
-  .contact form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .contact input,
-  .contact textarea {
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #444;
-    border-radius: 4px;
-    font-size: 16px;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #151515;
-    color: #F1F1F3;
-  }
-  
-  .contact button {
-    padding: 16px;
-    background-color: #F1F1F3;
-    color: #151515;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .contact button:hover {
-    background-color: #F1F1F3;
-  }
-  
-  /* Fade-in & Slide-up Animation */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s forwards;
-  }
-  
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    header {
-      padding: 16px 24px;
-    }
-  
-    .hero {
-      padding: 0 24px;
-    }
-  
-    .hero h1 {
-      font-size: 48px;
-    }
-  
-    .hero h2 {
-      font-size: 24px;
-    }
-    
-    nav ul {
-      display: none;
-      flex-direction: column;
-      background: #151515;
-      position: absolute;
-      top: 60px;
-      right: 24px;
-      padding: 20px;
-      border-radius: 8px;
-      gap: 10px;
-    }
-  
-    nav ul.open {
-      display: flex;
-    }
-  
-    .mobile-menu-toggle {
-      display: block;
-    }
-  }
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #151515;
+  color: #F1F1F3;
+  overflow-x: hidden;
+  padding-top: 10px;
+}
 
-  /* Global link styles */
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
 
-  a:hover {
-    text-decoration: underline;
-  }
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+}
 
-  /* Optional: Disable the old pseudo-element underline effect */
-  nav a::after {
-    content: none;
-  }
+.mobile-menu-toggle .hamburger,
+.mobile-menu-toggle .hamburger::before,
+.mobile-menu-toggle .hamburger::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: #F1F1F3;
+  transition: transform 0.3s ease;
+}
 
-  .spacer {
-    height: 450px; /* Adjust height as needed */
-  }
-  
-  /* New styles for the hero section columns */
-  .hero-columns {
-    display: flex;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px; /* Adjust as needed */
-  }
+.mobile-menu-toggle .hamburger {
+  top: 50%;
+  transform: translateY(-50%);
+}
 
-  .hero-content,
-  .hero-about {
-    flex: 1;
-    min-width: 300px; /* Ensures a minimum width for each column */
-    padding: 20px;
-  }
+.mobile-menu-toggle .hamburger::before {
+  top: -8px;
+}
 
-  /* Updated styles for the About section */
-  .hero-about {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-    position: relative;
-    top: 550px; /* Lower the about section by 550px on larger screens */
-  }
+.mobile-menu-toggle .hamburger::after {
+  top: 8px;
+}
 
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .hero-columns {
-      flex-direction: column;
-    }
-    
-    .hero-about {
-      top: 0; /* Remove the top offset for mobile */
-      margin-top: 550px; /* Add vertical spacing to preserve the lowered effect */
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      border-left: none; /* Optionally remove the left border */
-      text-align: center;  /* Center the block content by default */
-    }
-    
-    .hero-about h2 {
-      text-align: right; /* Place the 'About Me' title at the right border */
-    }
-  }
+/* Hero Section */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  background: url('../images/hero-image.jpg') no-repeat center center/cover;
+  padding: 0 48px;
+}
 
-  body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #151515;
-    color: #F1F1F3;
-    line-height: 1.6;
-  }
-  
-  .resume {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  header h1 {
-    font-size: 36px;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  section {
-    margin-bottom: 40px;
-  }
-  
-  section h2 {
-    font-size: 28px;
-    border-bottom: 1px solid #F1F1F3;
-    padding-bottom: 10px;
-    margin-top: 40px;
-  }
-  
-  .education-entry,
-  .job-entry {
-    margin-bottom: 20px;
-  }
-  
-  .job-title {
-    font-size: 20px;
-    margin-bottom: 5px;
-  }
-  
-  .job-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .job-responsibilities {
-    margin-left: 20px;
-    padding-left: 20px;
-    list-style-type: disc;
-  }
-  
-  .education-info {
-    font-size: 16px;
-    margin: 5px 0 0 20px;
-    padding-left: 20px;
-  }
-  
-  .job-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .applied-skills {
-    list-style-type: none;
-    font-style: italic;
-    margin-left: 0; /* Removes any default bullet indent */
-  }
-  
-  /* Optional: you might want to adjust the spacing for company info */
-  .job-info {
-    margin-bottom: 10px;
-  }
-  
-  /* Carousel container */
-  .carousel {
-    position: relative;
-    overflow: hidden;
-  }
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 151515;
+  z-index: 1;
+}
 
-  /* Each slide: hide by default */
-  .carousel-slide {
-    display: none;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  text-align: left;
+}
 
-  /* Active slide is displayed */
-  .carousel-slide.active {
-    display: block;
+.hero h1 {
+  font-size: 72px;
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 2px 2px 4px #151515;
+}
+
+.hero h2 {
+  font-size: 32px;
+  margin: 24px 0;
+  font-weight: 500;
+  color: #ccc;
+  text-shadow: 1px 1px 3px #151515;
+}
+
+.hero p {
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 24px 0;
+  color: #F1F1F3;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 16px 32px;
+  background-color: #F1F1F3;
+  color: #151515;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #F1F1F3;
+}
+
+/* Content Sections */
+.section {
+  padding: 100px 0;
+  background-color: #151515;
+}
+
+h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #F1F1F3;
+}
+
+h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h2 a:hover {
+  text-decoration: underline;
+}
+
+/* Services Section */
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.service-item {
+  background-color: #151515;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.service-item h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #F1F1F3;
+}
+
+.service-item p {
+  font-size: 16px;
+  color: #F1F1F3;
+}
+
+/* Projects Section */
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.project-item {
+  background-color: #151515;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item img {
+  width: 100%;
+  display: block;
+}
+
+.project-item h3 {
+  font-size: 20px;
+  margin: 16px;
+  color: #F1F1F3;
+}
+
+.project-item p {
+  font-size: 16px;
+  margin: 0 16px 16px;
+  color: #F1F1F3;
+}
+
+.project-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px #151515;
+}
+
+/* About Section */
+.about p {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #F1F1F3;
+}
+
+/* Contact Section */
+.contact p {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 18px;
+  color: #F1F1F3;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #151515;
+  color: #F1F1F3;
+}
+
+.contact button {
+  padding: 16px;
+  background-color: #F1F1F3;
+  color: #151515;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+  background-color: #F1F1F3;
+}
+
+/* Fade-in & Slide-up Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
     opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  /* This CSS rule adjusts the width of all images inside .slide-content */
-  .slide-content img {
-    width: auto;   /* Adjust the width as needed */
-    height: 400;   /* Maintains the aspect ratio */
-    margin: 0 10px; /* Optional: adds horizontal spacing between images */
+/* Responsive Styles */
+@media (max-width: 768px) {
+  header {
+    padding: 16px 24px;
   }
-
-  /* Dropdown container styles */
-  .dropdown {
-    position: relative;
-    display: inline-block;
+  .hero {
+    padding: 0 24px;
   }
-
-  /* Dropdown content (hidden by default) */
-  .dropdown-content {
+  .hero h1 {
+    font-size: 48px;
+  }
+  .hero h2 {
+    font-size: 24px;
+  }
+  nav ul {
     display: none;
+    flex-direction: column;
+    background: #151515;
     position: absolute;
-    background-color: #F1F1F3; /* change as needed */
-    min-width: 160px;
-    box-shadow: 0px 8px 16px #151515;
-    z-index: 1;
+    top: 60px;
+    right: 24px;
+    padding: 20px;
+    border-radius: 8px;
+    gap: 10px;
   }
-
-  /* Link styles inside the dropdown */
-  .dropdown-content a {
-    color: #151515;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-
-  /* Change background on hover for dropdown links */
-  .dropdown-content a:hover {
-    background-color: #F1F1F3;
-  }
-
-  /* Display the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  /* Optional: Enhance the styling of the main CTA button */
-  .cta-button {
-    background-color: #5b7cfd;
-    border: none;
-    color: #fff;
-    padding: 12px 24px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-
-  /* Optional: Button hover effect */
-  .cta-button:hover {
-    background-color: #5660f0;
-  }
-
-  /* Audio toggle button styled as a white rounded square */
-  .audio-toggle {
-    position: fixed;               /* Fixed position so it doesn't scroll */
-    top: 70px;                    /* 20px below your banner (assuming the banner is ~50px tall) */
-    right: 20px;                  /* 20px from the right side */
-    background-color: #F1F1F3;       /* White button */
-    border: none;
-    border-radius: 8px;           /* Rounded corners for a rounded square */
-    width: 50px;
-    height: 50px;
+  nav ul.open {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 1010;                /* Ensure it stays above other content */
-    outline: none;
   }
-
-  /* Additional styles for the music toggle button to keep it fixed in the viewport */
-  #music-toggle {
-    position: sticky;
-    top: 10px;          /* Adjust as necessary */
-    right: 10px;        /* Adjust as necessary */
-    z-index: 1000;      /* Keep on top of other elements */
-  }
-
-
-  /* Updated styles to ensure equal left/right spacing */
-  .responsive-image {
+  .mobile-menu-toggle {
     display: block;
-    margin: 75px auto;
-    max-width: calc(100vw - 150px);
-    height: auto;
   }
+}
+
+/* Global link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+nav a::after {
+  content: none;
+}
+
+.spacer {
+  height: 450px;
+}
+
+/* Hero Columns */
+.hero-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.hero-content,
+.hero-about {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+}
+
+.hero-about {
+  position: relative;
+  top: 550px;
+}
+
+/* Mobile adjustments for hero-about */
+@media (max-width: 768px) {
+  .hero-columns {
+    flex-direction: column;
+  }
+  .hero-about {
+    top: 0;
+    margin-top: 550px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .hero-about h2 {
+    text-align: right;
+  }
+}
+
+.resume {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid white;
+  box-sizing: border-box;
+}
+
+header h1 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+section h2 {
+  font-size: 28px;
+  border-bottom: 1px solid #F1F1F3;
+  padding-bottom: 10px;
+  margin-top: 40px;
+}
+
+.education-entry,
+.job-entry {
+  margin-bottom: 20px;
+}
+
+.job-title {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.job-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.job-responsibilities {
+  margin-left: 20px;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.education-info {
+  font-size: 16px;
+  margin: 5px 0 0 20px;
+  padding-left: 20px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.applied-skills {
+  list-style-type: none;
+  font-style: italic;
+  margin-left: 0;
+}
+
+/* Carousel & Slide */
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-slide {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-slide.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  z-index: 1000;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  padding: 12px 16px;
+  display: none;
+}
+
+.dropdown-content a {
+  color: #151515;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #F1F1F3;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.cta-button {
+  background-color: #5b7cfd;
+  border: none;
+  color: #fff;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cta-button:hover {
+  background-color: #5660f0;
+}
+
+.cta-button2 {
+  background-color: #0f0f0f;
+  border: none;
+  color: #fff;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cta-button2:hover {
+  background-color: #5660f0;
+}
+
+.audio-toggle {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  background-color: #F1F1F3;
+  border: none;
+  border-radius: 8px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1010;
+  outline: none;
+}
+
+#music-toggle {
+  position: sticky;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.responsive-image {
+  display: block;
+  margin: 75px auto;
+  max-width: calc(100vw - 100px);
+  height: auto;
+}
+
+.project-titles {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.project-title {
+  display: inline-block;
+  margin: 0 10px;
+  cursor: pointer;
+  padding-bottom: 4px;
+}
+
+.project-title.active {
+  text-decoration: underline;
+  font-weight: bold;
+}
