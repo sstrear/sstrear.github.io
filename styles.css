@@ -50,7 +50,7 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0;
 }
 
 /* Mobile Menu Toggle */
@@ -560,8 +560,8 @@ section h2 {
 
 .responsive-image {
   display: block;
-  margin: 75px auto;
-  max-width: calc(100vw - 100px);
+  margin: 50px auto;
+  max-width: calc(100% - 100px);
   height: auto;
 }
 
