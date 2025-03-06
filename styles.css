@@ -552,9 +552,9 @@ section h2 {
 
 .responsive-image {
   display: block;
-  margin: 50px auto;
+  margin: 75px auto;
   max-width: calc(100% - 100px);
-  height: auto;
+  max-height: 50vh;
 }
 
 .project-titles {
