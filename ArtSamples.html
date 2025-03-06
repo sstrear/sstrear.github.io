@@ -11,68 +11,181 @@
   />
   <link rel="stylesheet" href="styles.css" />
   <style>
+    .auto-typing {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 250px;
+      text-align: center;
+    }
 
+    /* Add new styles for the navigation section */
+    .nav-section {
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      z-index: 1000;
+      background-color: transparent; /* ensures background is transparent */
+    }
+
+    /* Optional: Add hover effect for better visibility */
+    .nav-section:hover {
+      background-color: rgba(255, 255, 255, 0.1); /* subtle background on hover */
+      backdrop-filter: blur(5px); /* slight blur effect on hover */
+    }
+
+    /* Ensure dropdown stays on top */
+    .dropdown-content {
+      position: absolute;
+      z-index: 1001; /* higher than nav-section */
+    }
+
+    .carousel-slide {
+      text-align: center;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .carousel-slide p {
+      text-align: justify;
+      margin: 20px auto;
+    }
+
+    .carousel-slide h3 {
+      margin-bottom: 20px;
+    }
+
+    .carousel-image {
+      max-width: 80vw;      /* 80% of viewport width */
+      max-height: 70vh;     /* 70% of viewport height */
+      width: auto;
+      height: auto;
+      padding: 0 20px;
+      object-fit: contain;  /* maintains aspect ratio */
+    }
   </style>
 </head>
 <body>
-  <!-- Audio Element & Toggle Button -->
-  <audio id="backgroundMusic" autoplay loop preload="auto" muted>
-    <source src="Jack Johnson - 01. Upside Down.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
+<!-- Audio element moved into the body with an id and preload attribute -->
+<audio id="backgroundMusic" autoplay loop preload="auto">
+  <source src="Jack Johnson - 01. Upside Down.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
   </audio>
-  <button id="music-toggle" class="audio-toggle">Play</button>
 
-
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero-columns">
-      <div class="hero-content">
-        <h1>Art Samples</h1>
-        <p>
-          Engineer | Innovator | Entrepreneur | Product Designer
-        </p>
-        <!-- Dropdown Button -->
-        <div class="dropdown">
-          <button class="cta-button">Explore</button>
-          <div class="dropdown-content">
-            <a href="index.html">Home</a>
-            <a href="ProductSamples.html">Product Samples</a>
-            <a href="mediation.html">Mediation</a>
-            <a href="questions.html">Questions</a>
-            <a href="masego.html">Masego</a>
+  <section class="nav-section">
+    <div class="dropdown">
+      <button class="cta-button">Explore</button>
+      <div class="dropdown-content">
+        <a href="index.html">Home</a>
+        <a href="ArtSamples.html">Art Samples</a>
+        <a href="resume.html">Resume</a>
+        <a href="MiniGame.html">Mini-Game</a>
       </div>
     </div>
   </section>
 
+  <section class="spacer"></section>
+
+<!-- HTML -->
+<body>
+  <!-- HTML Structure -->
+  <div class="auto-typing">
+    <span class="typed-text"></span>
+    <span class="cursor">&nbsp;</span>
+  </div>
+
+  <script>
+    // JavaScript for auto typing effect
+    document.addEventListener("DOMContentLoaded", function() {
+      const typedTextSpan = document.querySelector(".typed-text");
+      
+      // List of phrases to display
+      const textArray = [
+        "Hello!",
+        "I'd like to personally welcome you to my art samples.",
+        "Here are a few of my recent works.",
+        "I hope you enjoy them."
+      ];
+      
+      // Timing variables
+      const typingDelay = 100;
+      const erasingDelay = 100;
+      const newTextDelay = 2000; // Pause after each word
+      let textArrayIndex = 0;
+      let charIndex = 0;
+      
+      function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+          // Append next character to span
+          typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(type, typingDelay);
+        } else {
+          // After finishing typing, pause then start erasing
+          setTimeout(erase, newTextDelay);
+        }
+      }
+      
+      function erase() {
+        if (charIndex > 0) {
+          // Remove one character
+          typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(erase, erasingDelay);
+        } else {
+          // Move to the next phrase after erasing
+          textArrayIndex++;
+          if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+          setTimeout(type, typingDelay + 1100);
+        }
+      }
+      
+      // Initialize typing after a brief delay
+      setTimeout(type, newTextDelay + 250);
+    });
+  </script>
+
+
+<section class="spacer"></section>
+
  <!-- Featured Projects Section -->
   <section class="projects fade-in" id="projects">
     <div class="container">
-      <h2>Arts</h2>
+      <h2>Newest Art Samples</h2>
       <!-- Static list of project titles -->
       <div id="project-titles" class="project-titles">
-        <span class="project-title active" data-index="0">"Masego"</span>
+        <span class="project-title" data-index="0">"Masego"</span>
         <span class="project-title" data-index="1">"Mediation"</span>
         <span class="project-title" data-index="2">"Questions"</span>
       </div>
     </div>
+
+    <section class="spacer2"></section>
     <!-- Carousel -->
     <div id="project-carousel" class="carousel">
       <!-- Slide 1 -->
       <div class="carousel-slide active" data-type="jpg">
-        <h3>"Masego" - A Sonic and Visual Journey</h3>
-        <img src="MasegoPoster.jpg" alt="Masego" style="width:300px; height:auto;" />
+        <h1>"Masego" - A Sonic and Visual Journey</h1>
+        <section class="spacer3"></section>
+        <img src="MasegoPoster.jpg" alt="Masego" class="carousel-image" />
+        <section class="spacer3"></section>
         <p>
           This artwork is a dynamic fusion of music and motion, embodying the essence of Masego, a multi-instrumentalist known for his genre-blending sound and fluid artistry. The design plays with contrast, motion, and fragmentation, mirroring the rhythmic complexity and improvisational nature of his music.
-          The black-to-white gradient suggests a transition, perhaps from the unknown to clarity—symbolic of Masego’s fusion of jazz, R&B, and electronic elements that defy boundaries. The streaked background evokes movement, almost as if time itself is stretching, an allusion to the timeless quality of his melodies.
+          The black-to-white gradient suggests a transition, perhaps from the unknown to clarity—symbolic of Masego's fusion of jazz, R&B, and electronic elements that defy boundaries. The streaked background evokes movement, almost as if time itself is stretching, an allusion to the timeless quality of his melodies.
           At the heart of the composition, Masego is deconstructed yet unified, with vertical bars slicing through his image. These bars resemble equalizer visuals, reinforcing the sonic themes and emphasizing his presence as a musician. The selective transparency and layering create depth, making the viewer feel as though they are looking through windows of sound and memory.
-          The handwritten-style typography adds a personal, intimate touch, reminiscent of jazz signatures and classic album covers. Dated 9/18/2018, this moment is immortalized—perhaps marking a performance, an album release, or a personal milestone in Masego’s career.
-          This piece is more than an image—it’s a visual representation of sound in motion, a celebration of rhythm, artistry, and the ever-evolving creative journey of an artist who refuses to be confined.
+          The handwritten-style typography adds a personal, intimate touch, reminiscent of jazz signatures and classic album covers. Dated 9/18/2018, this moment is immortalized—perhaps marking a performance, an album release, or a personal milestone in Masego's career.
+          This piece is more than an image—it's a visual representation of sound in motion, a celebration of rhythm, artistry, and the ever-evolving creative journey of an artist who refuses to be confined.
         </p>
       </div>
+
+      <section class="spacer2"></section>
+
       <!-- Slide 2 -->
       <div class="carousel-slide" data-type="jpg">
-        <h3>"Mediation" – A Reflection on Perspective</h3>
-        <img src="Mediation.jpg" alt="Mediation" style="width:300px; height:auto;" />
+        <h1>"Mediation" – A Reflection on Perspective</h1>
+        <section class="spacer3"></section>
+        <img src="Mediation.jpg" alt="Mediation" class="carousel-image" />
+        <section class="spacer3"></section>
         <p>
           "Mediation" is an exploration of the tension between perception and understanding, a visual dialogue between conflicting identities, internalized emotions, and external projections. The composition is fractured yet symmetrical, mirroring the nature of mediation itself—a process of balance, negotiation, and self-exploration.
           At its core, two mirrored faces stare forward, their expressions heavy, almost frozen in contemplation. They are caught in a liminal space, neither fully connected nor completely apart, representing the struggle of seeing oneself clearly amid external forces and internal conflicts. The dark, high-contrast aesthetic adds weight to this concept, stripping away unnecessary detail and focusing the viewer on raw emotion.
@@ -81,10 +194,15 @@
           At its core, Mediation is about understanding—about the space between two perspectives, the process of deconstructing and rebuilding meaning.
         </p>
       </div>
+
+      <section class="spacer2"></section>
+
       <!-- Slide 3 -->
       <div class="carousel-slide" data-type="jpg">
-        <h3>"Questions" - A Visual Interpretation of Chanel</h3>
-        <img src="Questions.jpg" alt="Questions" style="width:300px; height:auto;" />
+        <h1>"Questions" - A Visual Interpretation of Chanel</h1>
+        <section class="spacer3"></section>
+        <img src="Questions.jpg" alt="Questions" class="carousel-image" />
+        <section class="spacer3"></section>
         <p>
           This piece is a visual interpretation of my childhood friend, Chanel—someone who isn't always easy to read but carries an immense depth beneath the surface. At first glance, the composition is fragmented, abstract, and layered with obscurity, much like how Chanel presents herself to the world. There's a certain mystery in her presence, a guarded nature that doesn't immediately reveal its meaning.
           The dark silhouette, almost hidden within the composition, mirrors the way Chanel exists in a space—observant, thoughtful, and enigmatic. She doesn't give everything away at once, but once you take the time to understand her, you begin to see the full picture. The textured upper half, blended with deep earthy browns and muted shadows, represents the complexity of her personality—layers upon layers of experiences, emotions, and guarded thoughts.
@@ -93,11 +211,6 @@
       </div>
     </div>
   </section>
-
-  <section class="spacer"></section>
-
-  <!-- Optional: Container for Three.js 3D viewer -->
-  <div id="shoe-container"></div>
 
   <!-- Load JavaScript as a module -->
   <script type="module" src="scripts.js"></script>
