@@ -1,6 +1,6 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js';
+import { GLTFLoader } from 'https://unpkg.com/three@0.157.0/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.157.0/examples/jsm/controls/OrbitControls.js';
 
 // ----------------------
 // Three.js 3D Viewer Code
@@ -73,48 +73,41 @@ document.addEventListener('DOMContentLoaded', function() {
   init3DViewer();
 
   // ----------------------
-  // Carousel & Project Titles Code
+  // Project Display Code
   // ----------------------
-  const carousel = document.getElementById("project-carousel");
-  const slides = carousel.querySelectorAll(".carousel-slide");
-  const titles = document.querySelectorAll(".project-title");
+  const projectTitles = document.querySelectorAll(".project-title");
+  const projectSlides = document.querySelectorAll(".project-slide");
 
-  // Keep track of the currently active slide
-  let activeSlide = 0;
-
-  // Function to display a specific slide and update title underline
-  function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    slides[index].classList.add("active");
-
-    titles.forEach(title => title.classList.remove("active"));
-    titles[index].classList.add("active");
-
-    // Apply sliding transition
-    carousel.style.transition = 'transform 0.5s ease';
-    carousel.style.transform = `translateX(-${index * 100}%)`;
+  if (projectSlides.length === 0) {
+    console.error("No project slides found!");
+    return;
   }
 
-  // Attach click listeners to project titles
-  titles.forEach(title => {
-    title.addEventListener("click", function() {
-      const targetIndex = parseInt(title.getAttribute("data-index"));
+  // Function to show a specific slide based on its index
+  function showSlide(index) {
+    // Hide all slides and remove the 'active' class from titles
+    projectSlides.forEach(slide => {
+      slide.style.display = "none";
+      slide.classList.remove("active");
+    });
+    projectTitles.forEach(title => title.classList.remove("active"));
 
-      // If the clicked button is already active, do nothing.
-      if (targetIndex === activeSlide) return;
+    // Show the selected slide
+    projectSlides[index].style.display = "block";
+    projectSlides[index].classList.add("active");
+    projectTitles[index].classList.add("active");
+  }
 
-      // Remove the active class from all titles and slides
-      titles.forEach(t => t.classList.remove('active'));
-      slides.forEach(slide => slide.classList.remove('active'));
-
-      // Add the active class to the clicked title and its corresponding slide
-      title.classList.add('active');
-      slides[targetIndex].classList.add('active');
-
-      // Update the active slide index
-      activeSlide = targetIndex;
+  // Attach click event listeners to each project title
+  projectTitles.forEach(title => {
+    title.addEventListener("click", () => {
+      const targetIndex = parseInt(title.getAttribute("data-index"), 10);
+      showSlide(targetIndex);
     });
   });
+
+  // Initialize by showing the first slide
+  showSlide(0);
 
   // ----------------------
   // Audio Toggle Code
@@ -139,90 +132,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
   console.log("Project switcher loaded");
 
-  // Select all project title buttons and project slides.
-  const projectTitles = document.querySelectorAll(".project-title");
-  const projectSlides = document.querySelectorAll(".project-slide");
-
-  if (projectSlides.length === 0) {
-    console.error("No project slides found!");
-    return;
+  // ----------------------
+  // Auto Typing Effect Code
+  // ----------------------
+  // JavaScript for auto typing effect
+  const typedTextSpan = document.querySelector(".typed-text");
+  
+  // List of phrases to display
+  const textArray = [
+    "Search for products...",
+    "Search for recipes...",
+    "Search for news...",
+    "Search for locations...",
+    "Search for deals..."
+  ];
+  
+  // Timing variables
+  const typingDelay = 150;
+  const erasingDelay = 100;
+  const newTextDelay = 2000; // Pause after each word
+  let textArrayIndex = 0;
+  let charIndex = 0;
+  
+  function type() {
+    if (charIndex < textArray[textArrayIndex].length) {
+      // Append next character to span
+      typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, typingDelay);
+    } else {
+      // After finishing typing, pause then start erasing
+      setTimeout(erase, newTextDelay);
+    }
   }
-
-  // Function to show a specific slide based on its index.
-  function showSlide(index) {
-    // Hide all slides and remove the 'active' class from titles.
-    projectSlides.forEach(slide => {
-      slide.style.display = "none";
-      slide.classList.remove("active");
-    });
-    projectTitles.forEach(title => title.classList.remove("active"));
-
-    // Show the selected slide.
-    projectSlides[index].style.display = "block";
-    projectSlides[index].classList.add("active");
-    projectTitles[index].classList.add("active");
-    console.log(`Showing slide ${index}`);
+  
+  function erase() {
+    if (charIndex > 0) {
+      // Remove one character
+      typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(erase, erasingDelay);
+    } else {
+      // Move to the next phrase after erasing
+      textArrayIndex++;
+      if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+      setTimeout(type, typingDelay + 1100);
+    }
   }
-
-  // Attach click event listeners to each project title button.
-  projectTitles.forEach(title => {
-    title.addEventListener("click", () => {
-      const targetIndex = parseInt(title.getAttribute("data-index"), 10);
-      console.log("Clicked title index:", targetIndex);
-      showSlide(targetIndex);
-    });
-  });
-
-  // Initialize by showing the first slide.
-  showSlide(0);
+  
+  // Initialize typing after a brief delay
+  setTimeout(type, newTextDelay + 250);
 });
 
-    // JavaScript for auto typing effect
-    document.addEventListener("DOMContentLoaded", function() {
-      const typedTextSpan = document.querySelector(".typed-text");
-      
-      // List of phrases to display
-      const textArray = [
-        "Search for products...",
-        "Search for recipes...",
-        "Search for news...",
-        "Search for locations...",
-        "Search for deals..."
-      ];
-      
-      // Timing variables
-      const typingDelay = 150;
-      const erasingDelay = 100;
-      const newTextDelay = 2000; // Pause after each word
-      let textArrayIndex = 0;
-      let charIndex = 0;
-      
-      function type() {
-        if (charIndex < textArray[textArrayIndex].length) {
-          // Append next character to span
-          typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-          charIndex++;
-          setTimeout(type, typingDelay);
-        } else {
-          // After finishing typing, pause then start erasing
-          setTimeout(erase, newTextDelay);
-        }
-      }
-      
-      function erase() {
-        if (charIndex > 0) {
-          // Remove one character
-          typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-          charIndex--;
-          setTimeout(erase, erasingDelay);
-        } else {
-          // Move to the next phrase after erasing
-          textArrayIndex++;
-          if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-          setTimeout(type, typingDelay + 1100);
-        }
-      }
-      
-      // Initialize typing after a brief delay
-      setTimeout(type, newTextDelay + 250);
-    });
+
