@@ -10,6 +10,29 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+
+    /* Add new styles for the navigation section */
+    .nav-section {
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      z-index: 1000;
+      background-color: transparent; /* ensures background is transparent */
+    }
+
+    /* Optional: Add hover effect for better visibility */
+    .nav-section:hover {
+      background-color: rgba(255, 255, 255, 0.1); /* subtle background on hover */
+      backdrop-filter: blur(5px); /* slight blur effect on hover */
+    }
+
+    /* Ensure dropdown stays on top */
+    .dropdown-content {
+      position: absolute;
+      z-index: 1001; /* higher than nav-section */
+    }
+  </style>
 </head>
 <body>
 <!-- Audio element moved into the body with an id and preload attribute -->
@@ -18,27 +41,20 @@
       Your browser does not support the audio element.
   </audio>
 
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero-columns">
-      <div class="hero-content">
-        <h1>Product Samples</h1>
-        <p>
-          Sammies | Dual-Threaded Bolt | Glass Bottle Insert
-        </p>
-        <!-- Dropdown Button -->
-        <div class="dropdown">
-          <button class="cta-button">Explore</button>
-          <div class="dropdown-content">
-            <a href="index.html">Home</a>
-            <a href="ArtSamples.html">Art Samples</a>
-            <a href="resume.html">Resume</a>
-            <a href="MiniGame.html">Mini-Game</a>
-          </div>
-        </div>
+  <section class="nav-section">
+    <div class="dropdown">
+      <button class="cta-button">Explore</button>
+      <div class="dropdown-content">
+        <a href="index.html">Home</a>
+        <a href="ProductSamples.html">Product Samples</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a href="MiniGame.html">Mini-Game</a>
       </div>
     </div>
   </section>
+
+  <section class="spacer3"></section>
 
   <!-- Projects Section (Carousel Style) -->
   <section class="projects fade-in" id="projects">
@@ -46,15 +62,37 @@
       <h2>Product Samples</h2>
       <!-- Navigation Titles (similar to ArtSamples layout) -->
       <div id="project-titles" class="project-titles">
-        <span class="project-title active" data-index="0">Sammies</span>
-        <span class="project-title" data-index="1">Dual-Threaded Bolt</span>
+        <span class="project-title active" data-index="0">Dual-Threaded Bolt</span>
+        <span class="project-title" data-index="1">Sammies</span>
         <span class="project-title" data-index="2">Glass Bottle Insert</span>
       </div>
     </div>
     <!-- Updated Slide Container (no carousel container or classes) -->
     <div id="project-slides">
-      <!-- Slide 1: Sammies -->
+      <!-- Slide 1: Dual-Threaded Bolt -->
       <div class="project-slide active" data-type="3d">
+        <h3 id="DualBolt">Dual-Threaded Bolt – A SolidWorks Experiment in Technical CAD</h3>
+        <model-viewer 
+          src="BoltNut.glb" 
+          alt="Dual-Threaded Bolt 3D Model" 
+          auto-rotate 
+          camera-controls 
+          ar
+          style="width: 600px; height: 600px;">
+        </model-viewer>
+        <p>
+          This project showcases an advanced SolidWorks design of a dual-threaded bolt, demonstrating
+          precision engineering and technical CAD expertise. The bolt features two interwoven thread
+          patterns, a complex geometry that challenges conventional machining and additive manufacturing
+          techniques. This experiment highlights proficiency in parametric modeling, thread customization,
+          and mechanical design principles, pushing the boundaries of standard fastener construction.
+          By exploring the intricacies of multi-threaded components, this SolidWorks model serves as both a
+          technical showcase and a conceptual exploration of non-traditional fastening solutions.
+        </p>
+      </div>
+
+      <!-- Slide 2: Sammies -->
+      <div class="project-slide" data-type="3d">
         <h3 id="Sammies">Sammies – The Ultimate Packable Adventure Shoe</h3>
         <model-viewer 
           src="SHOE.glb" 
@@ -75,27 +113,7 @@
           into a shoe that's as versatile as your journey.
         </p>
       </div>
-      <!-- Slide 2: Dual-Threaded Bolt -->
-      <div class="project-slide" data-type="3d">
-        <h3 id="DualBolt">Dual-Threaded Bolt – A SolidWorks Experiment in Technical CAD</h3>
-        <model-viewer 
-          src="BoltNut.glb" 
-          alt="Dual-Threaded Bolt 3D Model" 
-          auto-rotate 
-          camera-controls 
-          ar
-          style="width: 600px; height: 600px;">
-        </model-viewer>
-        <p>
-          This project showcases an advanced SolidWorks design of a dual-threaded bolt, demonstrating
-          precision engineering and technical CAD expertise. The bolt features two interwoven thread
-          patterns, a complex geometry that challenges conventional machining and additive manufacturing
-          techniques. This experiment highlights proficiency in parametric modeling, thread customization,
-          and mechanical design principles, pushing the boundaries of standard fastener construction.
-          By exploring the intricacies of multi-threaded components, this SolidWorks model serves as both a
-          technical showcase and a conceptual exploration of non-traditional fastening solutions.
-        </p>
-      </div>
+
       <!-- Slide 3: Glass Bottle Insert -->
       <div class="project-slide" data-type="3d">
         <h3 id="GlassBottleInsert">Glass Bottle Insert – Optimized Airflow & Fluid Sealing</h3>
