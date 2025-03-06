@@ -50,7 +50,7 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0;
+  padding: 10px;
 }
 
 /* Mobile Menu Toggle */
@@ -349,9 +349,17 @@ nav a::after {
   content: none;
 }
 
-.spacer {
-  height: 450px;
-}
+  .spacer {
+    height: 450px;
+  }
+
+  .spacer2 {
+    height: 100px;
+  }
+
+  .spacer3 {
+    height: 10px;
+  }
 
 /* Hero Columns */
 .hero-columns {
@@ -458,22 +466,6 @@ section h2 {
   margin-left: 0;
 }
 
-/* Carousel & Slide */
-.carousel {
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel-slide {
-  display: none;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.carousel-slide.active {
-  display: block;
-  opacity: 1;
-}
 
 /* Dropdown Styles */
 .dropdown {
@@ -580,4 +572,48 @@ section h2 {
 .project-title.active {
   text-decoration: underline;
   font-weight: bold;
+  text-align: center;
 }
+
+.project-slide {
+  display: none; /* All slides hidden by default */
+  align-items: center;
+  text-align: center;
+}
+
+/* The active slide is set to display: block by JavaScript */
+.project-slide.active {
+  display: block;
+  align-items: center;
+  text-align: center;
+}
+
+  /* Container styling */
+  .auto-typing {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 72px;
+    margin: 0;
+    padding: 0;
+    background-color: #151515;
+    color: #F1F1F3;
+    overflow-x: hidden;
+    padding-top: 10px;
+  }
+
+  /* Cursor styling with blinking animation */
+  .cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: #ffffff;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+
