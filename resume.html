@@ -17,11 +17,35 @@
     Your browser does not support the audio element.
 </audio>
 
-<body>
-  <div class="resume">
+<style>
 
-    <div class="dropdown">
-      <button class="cta-button">Explore</button>
+  /* Add new styles for the navigation section */
+  .nav-section {
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    z-index: 1000;
+    background-color: transparent; /* ensures background is transparent */
+  }
+
+  /* Optional: Add hover effect for better visibility */
+  .nav-section:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* subtle background on hover */
+    backdrop-filter: blur(5px); /* slight blur effect on hover */
+  }
+
+  /* Ensure dropdown stays on top */
+  .dropdown-content {
+    position: absolute;
+    z-index: 1001; /* higher than nav-section */
+  }
+
+</style>
+
+<section class="nav-section">
+  <div class="dropdown">
+    <button class="cta-button">Explore</button>
+    <div class="dropdown-content">
       <div class="dropdown-content">
         <a href="index.html">Home</a>
         <a href="ArtSamples.html">Art Samples</a>
@@ -30,6 +54,11 @@
         <a href="MiniGame.html">Mini-Game</a>
       </div>
     </div>
+  </div>
+</section>
+
+<body>
+  <div class="resume">
 
     <header>
       <h2>Sammy Strear</h2>
@@ -116,8 +145,6 @@
       </div>
     </section>
   
-
-    <section class="spacer"></section>
   
     <script src="scripts.js"></script>
 </body>
