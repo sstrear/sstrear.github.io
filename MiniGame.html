@@ -5,10 +5,21 @@
     <!-- Responsive meta tag for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dragon vs. Rain Clouds</title>
+
+<!-- Audio element moved into the body with an id and preload attribute -->
+<audio id="backgroundMusic" autoplay loop preload="auto">
+  <source src="Jack Johnson - 01. Upside Down.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+  </audio>
+
     <style>
-      /* Ensure document takes up the full viewport height */
+      /* Ensure document takes up the full viewport height and prevent scrolling/zooming */
       html, body {
         height: 100%;
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        touch-action: none;
       }
       
       /* Center the game container using flexbox */
@@ -39,10 +50,16 @@
       #leftButton, #rightButton, #fireButton {
         position: absolute;
         bottom: 20px;
-        padding: 10px 20px;
-        font-size: 18px;
+        padding: 20px 30px;
+        font-size: 24px;
         opacity: 0.7;
         z-index: 10;
+        background: rgba(255, 255, 255, 0.3);
+        border: 2px solid white;
+        border-radius: 10px;
+        color: white;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
       }
       #leftButton {
         left: 20px;
@@ -373,6 +390,40 @@
           }
         }
       });
+
+      // Add these lines near the start of your script
+      // Prevent default touch behaviors
+      document.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+      }, { passive: false });
+
+      document.addEventListener('touchstart', function(e) {
+        if (e.target.tagName !== 'BUTTON') {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      // Update the canvas size based on screen size
+      function resizeCanvas() {
+        const maxWidth = window.innerWidth * 0.95;
+        const maxHeight = window.innerHeight * 0.9;
+        const ratio = 600/800;
+        
+        let newWidth = maxWidth;
+        let newHeight = maxWidth / ratio;
+        
+        if (newHeight > maxHeight) {
+          newHeight = maxHeight;
+          newWidth = maxHeight * ratio;
+        }
+        
+        canvas.style.width = newWidth + 'px';
+        canvas.style.height = newHeight + 'px';
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      window.addEventListener('orientationchange', resizeCanvas);
+      resizeCanvas();
 
       // Start the game loop
       gameLoop();
