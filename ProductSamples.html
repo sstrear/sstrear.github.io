@@ -10,15 +10,12 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-
-  </style>
 </head>
 <body>
-  <!-- Audio Element & Toggle Button -->
-  <audio id="backgroundMusic" autoplay loop preload="auto" muted>
-    <source src="Jack Johnson - 01. Upside Down.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
+<!-- Audio element moved into the body with an id and preload attribute -->
+<audio id="backgroundMusic" autoplay loop preload="auto">
+  <source src="Jack Johnson - 01. Upside Down.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
   </audio>
 
   <!-- Hero Section -->
@@ -27,7 +24,7 @@
       <div class="hero-content">
         <h1>Product Samples</h1>
         <p>
-          Engineer | Innovator | Entrepreneur | Product Designer
+          Sammies | Dual-Threaded Bolt | Glass Bottle Insert
         </p>
         <!-- Dropdown Button -->
         <div class="dropdown">
@@ -35,64 +32,92 @@
           <div class="dropdown-content">
             <a href="index.html">Home</a>
             <a href="ArtSamples.html">Art Samples</a>
-            <a href="DualBolt.html">Dual-Threaded Bolt</a>
-            <a href="sammies.html">Sammies</a>`
-            <a href="sippie.html">Wine Bottle Insert</a>
+            <a href="resume.html">Resume</a>
+            <a href="MiniGame.html">Mini-Game</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-
-      <!-- Slide 4 -->
-      <h3>Sammies – The Ultimate Packable Adventure Shoe</h3>
-      <!-- GLB Model -->
-      <model-viewer 
-        src="SHOE.glb" 
-        alt="Project 2 3D Model" 
-        auto-rotate 
-        camera-controls 
-        ar
-        style="width: 600px; height: 600px;">
-      </model-viewer>
-      <p>
-        Sammies are designed for outdoor explorers who refuse to compromise on comfort, performance, or portability. Engineered with lightweight, waterproof materials and an innovative collapsible sole, these shoes adapt to any environment—whether you're backpacking through rugged terrain, unwinding at camp, or navigating snowy après-ski moments. The flexible design allows for easy packing without sacrificing durability, while the insulated interior keeps your feet warm and dry in any condition. Sammies redefine adventure footwear by blending functionality, comfort, and modern aesthetics into a shoe that's as versatile as your journey.
-      </p>
+  <!-- Projects Section (Carousel Style) -->
+  <section class="projects fade-in" id="projects">
+    <div class="container">
+      <h2>Product Samples</h2>
+      <!-- Navigation Titles (similar to ArtSamples layout) -->
+      <div id="project-titles" class="project-titles">
+        <span class="project-title active" data-index="0">Sammies</span>
+        <span class="project-title" data-index="1">Dual-Threaded Bolt</span>
+        <span class="project-title" data-index="2">Glass Bottle Insert</span>
+      </div>
     </div>
-    <!-- Slide 5 -->
-      <h3>Dual-Threaded Bolt – A SolidWorks Experiment in Technical CAD</h3>
-      <model-viewer 
-        src="BoltNut.glb" 
-        alt="Project 2 3D Model" 
-        auto-rotate 
-        camera-controls 
-        ar
-        style="width: 600px; height: 600px;">
-      </model-viewer>
-      <p>
-        This project showcases an advanced SolidWorks design of a dual-threaded bolt, demonstrating precision engineering and technical CAD expertise. The bolt features two interwoven thread patterns, a complex geometry that challenges conventional machining and additive manufacturing techniques. This experiment highlights proficiency in parametric modeling, thread customization, and mechanical design principles.
-      </p>
-    </div>
-    <!-- Slide 6 -->
-      <h3>Glass Bottle Insert – Optimized Airflow & Fluid Sealing</h3>
-      <model-viewer 
-        src="WineRender.glb" 
-        alt="Project 2 3D Model" 
-        auto-rotate 
-        camera-controls 
-        ar
-        style="width: 600px; height: 600px;">
-      </model-viewer>
-      <p>
-        This project showcases an advanced design focused on optimizing airflow and fluid sealing. The precise engineering ensures smooth fluid control and controlled pouring without unwanted spills or air bubbles. It is a technical exploration of fluid dynamics and seal optimization.
-      </p>
-    </div>
-  </div>
+    <!-- Updated Slide Container (no carousel container or classes) -->
+    <div id="project-slides">
+      <!-- Slide 1: Sammies -->
+      <div class="project-slide active" data-type="3d">
+        <h3 id="Sammies">Sammies – The Ultimate Packable Adventure Shoe</h3>
+        <model-viewer 
+          src="SHOE.glb" 
+          alt="Sammies 3D Model" 
+          auto-rotate 
+          camera-controls 
+          ar
+          style="width: 600px; height: 600px;">
+        </model-viewer>
+        <p>
+          Sammies are designed for outdoor explorers who refuse to compromise on comfort,
+          performance, or portability. Engineered with lightweight, waterproof materials and
+          an innovative collapsible sole, these shoes adapt to any environment—whether you're
+          backpacking through rugged terrain, unwinding at camp, or navigating snowy après-ski
+          moments. The flexible design allows for easy packing without sacrificing durability,
+          while the insulated interior keeps your feet warm and dry in any condition. Sammies
+          redefine adventure footwear by blending functionality, comfort, and modern aesthetics
+          into a shoe that's as versatile as your journey.
+        </p>
+      </div>
+      <!-- Slide 2: Dual-Threaded Bolt -->
+      <div class="project-slide" data-type="3d">
+        <h3 id="DualBolt">Dual-Threaded Bolt – A SolidWorks Experiment in Technical CAD</h3>
+        <model-viewer 
+          src="BoltNut.glb" 
+          alt="Dual-Threaded Bolt 3D Model" 
+          auto-rotate 
+          camera-controls 
+          ar
+          style="width: 600px; height: 600px;">
+        </model-viewer>
+        <p>
+          This project showcases an advanced SolidWorks design of a dual-threaded bolt, demonstrating
+          precision engineering and technical CAD expertise. The bolt features two interwoven thread
+          patterns, a complex geometry that challenges conventional machining and additive manufacturing
+          techniques. This experiment highlights proficiency in parametric modeling, thread customization,
+          and mechanical design principles, pushing the boundaries of standard fastener construction.
+          By exploring the intricacies of multi-threaded components, this SolidWorks model serves as both a
+          technical showcase and a conceptual exploration of non-traditional fastening solutions.
+        </p>
+      </div>
+      <!-- Slide 3: Glass Bottle Insert -->
+      <div class="project-slide" data-type="3d">
+        <h3 id="GlassBottleInsert">Glass Bottle Insert – Optimized Airflow & Fluid Sealing</h3>
+        <model-viewer 
+          src="WineRender.glb" 
+          alt="Glass Bottle Insert 3D Model" 
+          auto-rotate 
+          camera-controls 
+          ar
+          style="width: 600px; height: 600px;">
+        </model-viewer>
+        <p>
+          This project showcases an advanced design focused on optimizing airflow and fluid sealing.
+          The precise engineering ensures smooth fluid control and controlled pouring without unwanted spills
+          or air bubbles. It is a technical exploration of fluid dynamics and seal optimization.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- Load JavaScript as a module -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
   <script type="module" src="scripts.js"></script>
 </body>
 </html>
