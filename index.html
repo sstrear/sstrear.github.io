@@ -11,7 +11,7 @@
 
   gtag('config', 'G-N6SMSKDJNQ');
 </script>
-  
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sammy Strear</title>
@@ -39,7 +39,7 @@
   <section class="services fade-in" id="services">
     <div class="bar">
       <span class="bar_content">
-        Content of the week: "Upside Down" by Jack Johnson | Mini-Game: Fire vs. Water 
+        Content of the Week: "Upside Down" by Jack Johnson | Mini-Game: Fire vs. Water
       </span>
     </div>
   </section>
@@ -78,5 +78,27 @@
 
   <!-- Load JavaScript as a module -->
   <script type="module" src="scripts.js"></script>
+  <script>
+    const audio = document.getElementById('backgroundMusic');
+    
+    // Store audio position before leaving page
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem('audioPosition', audio.currentTime);
+      localStorage.setItem('audioPlaying', !audio.paused);
+    });
+
+    // Restore audio position when page loads
+    window.addEventListener('load', () => {
+      const savedPosition = localStorage.getItem('audioPosition');
+      const wasPlaying = localStorage.getItem('audioPlaying') === 'true';
+      
+      if (savedPosition) {
+        audio.currentTime = parseFloat(savedPosition);
+        if (wasPlaying) {
+          audio.play();
+        }
+      }
+    });
+  </script>
 </body>
 </html>
