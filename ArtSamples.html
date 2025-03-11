@@ -29,6 +29,24 @@
       transform: translateX(-50%);
       top: 250px;
       text-align: center;
+      font-size: 3.5rem; /* Increased base font size for desktop */
+      width: 90%;
+      max-width: 1200px; /* Increased max-width for better text flow */
+    }
+
+    /* Media queries for responsive text sizing */
+    @media screen and (max-width: 768px) {
+      .auto-typing {
+        font-size: 2.5rem; /* Increased size for medium screens */
+        top: 150px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .auto-typing {
+        font-size: 2rem; /* Increased size for small screens */
+        top: 100px;
+      }
     }
 
     /* Add new styles for the navigation section */
