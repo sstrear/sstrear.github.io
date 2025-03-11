@@ -11,7 +11,7 @@
 
   gtag('config', 'G-N6SMSKDJNQ');
 </script>
-  
+
     <meta charset="UTF-8">
     <!-- Responsive meta tag for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,6 +94,10 @@
     </style>
   </head>
   <body>
+    <audio id="backgroundMusic" autoplay loop preload="auto">
+      <source src="Jack Johnson - 01. Upside Down.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
     <!-- Home button -->
     <button id="homeButton">Home</button>
     <div id="gameContainer">
@@ -433,6 +437,28 @@
 
       // Start the game loop
       gameLoop();
+    </script>
+    <script>
+      const audio = document.getElementById('backgroundMusic');
+      
+      // Store audio position before leaving page
+      window.addEventListener('beforeunload', () => {
+        localStorage.setItem('audioPosition', audio.currentTime);
+        localStorage.setItem('audioPlaying', !audio.paused);
+      });
+
+      // Restore audio position when page loads
+      window.addEventListener('load', () => {
+        const savedPosition = localStorage.getItem('audioPosition');
+        const wasPlaying = localStorage.getItem('audioPlaying') === 'true';
+        
+        if (savedPosition) {
+          audio.currentTime = parseFloat(savedPosition);
+          if (wasPlaying) {
+            audio.play();
+          }
+        }
+      });
     </script>
   </body>
 </html>
