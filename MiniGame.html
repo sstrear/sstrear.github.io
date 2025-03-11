@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6SMSKDJNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-N6SMSKDJNQ');
-</script>
-
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6SMSKDJNQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N6SMSKDJNQ');
+    </script>
+    
     <meta charset="UTF-8">
     <!-- Responsive meta tag for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dragon vs. Rain Clouds</title>
-
-
+    
     <style>
       /* Ensure document takes up the full viewport height and prevent scrolling/zooming */
       html, body {
@@ -175,34 +172,47 @@
         e.preventDefault();
         let touch = e.touches[0];
         let rect = canvas.getBoundingClientRect();
-        let touchX = touch.clientX - rect.left;
+        let scaleX = canvas.width / rect.width;
+        let touchX = (touch.clientX - rect.left) * scaleX;
         player.x = touchX - player.width / 2;
         if(player.x < 0) player.x = 0;
         if(player.x + player.width > canvas.width) player.x = canvas.width - player.width;
       }, {passive: false});
 
-      // FIRE button to shoot a fireball on mobile
+      // FIRE button to shoot a fireball on mobile/desktop
       document.getElementById("fireButton").addEventListener("click", function() {
         if(gameState === "playing") {
           fireballs.push({ x: player.x + player.width / 2 - 5, y: player.y, width: 10, height: 20 });
         }
       });
+      document.getElementById("fireButton").addEventListener("touchstart", function(e) {
+        e.preventDefault();
+        if(gameState === "playing") {
+          fireballs.push({ x: player.x + player.width / 2 - 5, y: player.y, width: 10, height: 20 });
+        }
+      }, {passive: false});
 
-      // Arrow button controls for mobile
+      // Arrow button controls for mobile/desktop
       const leftButton = document.getElementById("leftButton");
       const rightButton = document.getElementById("rightButton");
 
+      // Left button events
       leftButton.addEventListener("mousedown", () => { moveLeft = true; });
       leftButton.addEventListener("mouseup", () => { moveLeft = false; });
+      leftButton.addEventListener("mouseleave", () => { moveLeft = false; });
       leftButton.addEventListener("touchstart", (e) => { e.preventDefault(); moveLeft = true; });
       leftButton.addEventListener("touchend", (e) => { e.preventDefault(); moveLeft = false; });
+      leftButton.addEventListener("touchcancel", (e) => { e.preventDefault(); moveLeft = false; });
 
+      // Right button events
       rightButton.addEventListener("mousedown", () => { moveRight = true; });
       rightButton.addEventListener("mouseup", () => { moveRight = false; });
+      rightButton.addEventListener("mouseleave", () => { moveRight = false; });
       rightButton.addEventListener("touchstart", (e) => { e.preventDefault(); moveRight = true; });
       rightButton.addEventListener("touchend", (e) => { e.preventDefault(); moveRight = false; });
+      rightButton.addEventListener("touchcancel", (e) => { e.preventDefault(); moveRight = false; });
 
-      // Updated home button event listener to redirect to index.html
+      // Home button event: redirect to index.html
       document.getElementById("homeButton").addEventListener("click", function() {
         window.location.href = "index.html";
       });
@@ -388,36 +398,37 @@
       // Handle canvas click events for buttons on home and game over screens
       canvas.addEventListener("click", function(e) {
         const rect = canvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        // Calculate scaling factors from CSS size to canvas size
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const canvasX = (e.clientX - rect.left) * scaleX;
+        const canvasY = (e.clientY - rect.top) * scaleY;
         if(gameState === "home") {
-          if(x >= buttonX && x <= buttonX + buttonWidth && y >= buttonY && y <= buttonY + buttonHeight) {
+          if(canvasX >= buttonX && canvasX <= buttonX + buttonWidth && canvasY >= buttonY && canvasY <= buttonY + buttonHeight) {
             startGame();
           }
         } else if(gameState === "gameover") {
-          if(x >= buttonX && x <= buttonX + buttonWidth && y >= buttonY && y <= buttonY + buttonHeight) {
+          if(canvasX >= buttonX && canvasX <= buttonX + buttonWidth && canvasY >= buttonY && canvasY <= buttonY + buttonHeight) {
             startGame();
           }
         }
       });
 
-      // Add these lines near the start of your script
-      // Prevent default touch behaviors
-      document.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-      }, { passive: false });
-
+      // Prevent default touch behaviors for non-button elements
       document.addEventListener('touchstart', function(e) {
-        if (e.target.tagName !== 'BUTTON') {
+        if (!e.target.closest('button')) {
           e.preventDefault();
         }
+      }, { passive: false });
+      document.addEventListener('touchmove', function(e) {
+        e.preventDefault();
       }, { passive: false });
 
       // Update the canvas size based on screen size
       function resizeCanvas() {
         const maxWidth = window.innerWidth * 0.95;
         const maxHeight = window.innerHeight * 0.9;
-        const ratio = 600/800;
+        const ratio = 600 / 800;
         
         let newWidth = maxWidth;
         let newHeight = maxWidth / ratio;
