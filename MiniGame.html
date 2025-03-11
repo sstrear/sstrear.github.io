@@ -470,6 +470,15 @@
           }
         }
       });
+
+      leftButton.addEventListener("pointerdown", () => { moveLeft = true; });
+      leftButton.addEventListener("pointerup", () => { moveLeft = false; });
+      leftButton.addEventListener("pointercancel", () => { moveLeft = false; });
+
+      rightButton.addEventListener("pointerdown", () => { moveRight = true; });
+      rightButton.addEventListener("pointerup", () => { moveRight = false; });
+      rightButton.addEventListener("pointercancel", () => { moveRight = false; });
+
     </script>
   </body>
 </html>
