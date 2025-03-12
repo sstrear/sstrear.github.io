@@ -73,12 +73,14 @@
     .carousel-slide {
       text-align: center;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 5vw; /* Changed to viewport width units */
     }
 
     .carousel-slide p {
       text-align: justify;
       margin: 20px auto;
+      max-width: 1000px;  /* Increased max-width slightly */
+      width: 90%;  /* Added to ensure content stays within bounds */
     }
 
     .carousel-slide h3 {
@@ -92,6 +94,19 @@
       height: auto;
       padding: 0 20px;
       object-fit: contain;  /* maintains aspect ratio */
+    }
+
+    /* Add responsive adjustments for different screen sizes */
+    @media screen and (max-width: 768px) {
+      .carousel-slide {
+        padding: 0 8vw; /* Slightly larger padding on medium screens */
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .carousel-slide {
+        padding: 0 10vw; /* More padding on smaller screens */
+      }
     }
   </style>
 </head>
