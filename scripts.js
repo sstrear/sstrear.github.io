@@ -148,9 +148,9 @@ document.addEventListener('DOMContentLoaded', function() {
   ];
   
   // Timing variables
-  const typingDelay = 150;
-  const erasingDelay = 100;
-  const newTextDelay = 2000; // Pause after each word
+  const typingDelay = 75;
+  const erasingDelay = 37;
+  const newTextDelay = 500; // Pause after each word
   let textArrayIndex = 0;
   let charIndex = 0;
   
