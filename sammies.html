@@ -1,58 +1,658 @@
 <!DOCTYPE html>
 <html lang="en">
-<html lang="en">
 <head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6SMSKDJNQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N6SMSKDJNQ');
+</script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>"Sammies"</title>
+  <title>Sammies - Sammy Strear</title>
   <!-- Google Fonts: Inter -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Add new styles for the navigation section */
+    .nav-section {
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      z-index: 1000;
+      background-color: transparent;
+    }
 
+    .nav-section:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    .dropdown-content {
+      position: absolute;
+      z-index: 1001;
+    }
+
+    /* Technical content styles */
+    .technical-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      color: #F1F1F3;
+    }
+
+    .project-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .project-header h1 {
+      font-size: clamp(32px, 8vw, 48px);
+      margin-bottom: 20px;
+      color: #F1F1F3;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .project-header p {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .model-section {
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    .model-section model-viewer {
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      margin: 0 auto;
+    }
+
+    .content-section {
+      margin: 60px 0;
+    }
+
+    .content-section h2 {
+      font-size: clamp(24px, 5vw, 36px);
+      margin-bottom: 30px;
+      color: #F1F1F3;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .content-section h3 {
+      font-size: clamp(20px, 4vw, 26px);
+      margin: 30px 0 15px 0;
+      color: #F1F1F3;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .content-section p {
+      font-size: clamp(14px, 2.5vw, 16px);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #F1F1F3;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .challenge-card {
+      padding: 25px;
+      transition: transform 0.3s ease;
+    }
+
+    .challenge-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .challenge-card h4 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #F1F1F3;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .challenge-card p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .process-steps {
+      padding: 30px;
+      margin: 30px 0;
+    }
+
+    .process-steps ol {
+      padding-left: 20px;
+    }
+
+    .process-steps li {
+      margin-bottom: 15px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .settings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+    }
+
+    .settings-table th,
+    .settings-table td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #333;
+    }
+
+    .settings-table th {
+      color: #F1F1F3;
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .settings-table td {
+      color: #F1F1F3;
+    }
+
+    .learnings-section {
+      padding: 30px;
+      margin: 40px 0;
+    }
+
+    .learnings-section h3 {
+      color: #F1F1F3;
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .learnings-section ul {
+      padding-left: 20px;
+    }
+
+    .learnings-section li {
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .component-section {
+      margin: 40px 0;
+    }
+
+    .component-section h4 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #F1F1F3;
+      font-weight: 600;
+    }
+
+    .component-section ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .component-section li {
+      margin-bottom: 8px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .project-header h1 {
+        font-size: clamp(28px, 10vw, 36px);
+      }
+      
+      .content-section h2 {
+        font-size: clamp(20px, 8vw, 28px);
+      }
+      
+      .challenge-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .settings-table {
+        font-size: clamp(12px, 3vw, 14px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .project-header h1 {
+        font-size: clamp(24px, 12vw, 32px);
+      }
+      
+      .content-section h2 {
+        font-size: clamp(18px, 10vw, 24px);
+      }
+      
+      .content-section h3 {
+        font-size: clamp(16px, 8vw, 20px);
+      }
+      
+      .content-section p {
+        font-size: clamp(12px, 4vw, 14px);
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Audio Element & Toggle Button -->
-  <audio id="backgroundMusic" autoplay loop preload="auto" muted>
-    <source src="Jack Johnson - 01. Upside Down.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
+<!-- Audio element moved into the body with an id and preload attribute -->
+<audio id="backgroundMusic" autoplay loop preload="auto">
+  <source src="deep-relaxation-11497.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
   </audio>
 
-          <!-- Dropdown Button -->
-          <div class="dropdown">
-            <button class="cta-button">More</button>
-              <div class="dropdown-content">
-                <a href="index.html">Home</a>
-                <a href="sippie.html">Wine Bottle Insert</a>
-                <a href="DualBolt.html">Dual-Threaded Bolt</a>
-              </div>
-            </div>
-          </div>
-
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-      <div class="hero-content">
-        <h3>Sammies – The Ultimate Packable Adventure Shoe</h3>
-        <!-- GLB Model -->
-        <model-viewer 
-          src="SHOE.glb" 
-          alt="Project 2 3D Model" 
-          auto-rotate 
-          camera-controls 
-          ar
-          style="width: 600px; height: 600px;">
-        </model-viewer>
-        <p>
-          Sammies are designed for outdoor explorers who refuse to compromise on comfort, performance, or portability. Engineered with lightweight, waterproof materials and an innovative collapsible sole, these shoes adapt to any environment—whether you're backpacking through rugged terrain, unwinding at camp, or navigating snowy après-ski moments. The flexible design allows for easy packing without sacrificing durability, while the insulated interior keeps your feet warm and dry in any condition. Sammies redefine adventure footwear by blending functionality, comfort, and modern aesthetics into a shoe that's as versatile as your journey.
-        </p>
-
+  <section class="nav-section">
+    <div class="dropdown">
+      <button class="cta-button">Explore</button>
+      <div class="dropdown-content">
+        <a href="index.html">Home</a>
+        <a href="ProductSamples.html">Product Samples</a>
+        <a href="ArtSamples.html">Art Samples</a>
+        <a href="about.html">About</a>
       </div>
     </div>
   </section>
-  </body>
-</html>
 
+  <section class="spacer3"></section>
 
+  <div class="technical-content">
+    <!-- Project Header -->
+    <div class="project-header">
+      <h1>Sammies</h1>
+      <p>
+        Redefining the way you explore — one step at a time. Built for Explorers. Designed for Comfort.
+        Sammies are revolutionary outdoor shoes for those who move light but think big. Engineered to 
+        collapse down and pop back up without compromising comfort or performance, Sammies are the 
+        perfect companion for campers, backpackers, vanlifers, and après-ski adventurers.
+      </p>
+    </div>
+
+    <!-- 3D Model Section -->
+    <div class="model-section">
+      <model-viewer 
+        src="SHOE.glb" 
+        alt="Sammies 3D Model" 
+        auto-rotate 
+        camera-controls 
+        ar>
+      </model-viewer>
+    </div>
+
+    <!-- Product Overview -->
+    <div class="content-section">
+      <h2>Product Overview</h2>
+      <p>
+        Sammies introduce a new category of outdoor footwear — collapsible performance shoes. Whether 
+        you're on a backcountry trek or relaxing at base camp, Sammies adapt to your pace, your pack, 
+        and your path.
+      </p>
+      
+      <p>
+        We've reinvented footwear for the outdoors by fusing the flexibility of a slipper, the 
+        protection of a boot, and the packability of a jacket — all in a sleek, durable form.
+      </p>
+      
+      <h3>Key Innovation: Collapsible Sole System</h3>
+      <p>
+        At the core of Sammies is a patent-pending, modular sole system that collapses by over 70% 
+        for packability — and deploys in under 30 seconds to deliver rugged traction and full 
+        structural support.
+      </p>
+      
+      <ul>
+        <li>Multi-hinge, reinforced architecture</li>
+        <li>Durable underfoot plate to preserve stability</li>
+        <li>Lock-and-seal deployment system for intuitive use</li>
+        <li>Designed for 1000+ collapse cycles</li>
+      </ul>
+    </div>
+
+    <!-- Design Components -->
+    <div class="content-section">
+      <h2>Design Components</h2>
+      
+      <div class="component-section">
+        <h3>Waterproof, Breathable, and Durable</h3>
+        <p>Every component of Sammies was chosen with real-life terrain and weather in mind:</p>
+        <ul>
+          <li>Advanced TPU membrane for full waterproof protection</li>
+          <li>Seam-sealed construction and pressure-tested gaskets</li>
+          <li>Durable nylon upper resists abrasion and wind</li>
+          <li>Quick-dry interior made from breathable synthetics</li>
+        </ul>
+      </div>
+
+      <div class="component-section">
+        <h3>Comfort & Fit Engineering</h3>
+        <p>Because adventures shouldn't end in sore feet:</p>
+        <ul>
+          <li>Anatomically contoured footbed for support and recovery</li>
+          <li>Multi-density midsole for cushioning and shock absorption</li>
+          <li>Wide toe box to accommodate swelling and thicker socks</li>
+          <li>Ultra-lightweight build reduces fatigue over time</li>
+        </ul>
+      </div>
+
+      <div class="component-section">
+        <h3>Travel-Friendly & Packable</h3>
+        <ul>
+          <li>Integrated compression system with snap-flat design</li>
+          <li>Internal ribs ensure stable packing profile</li>
+          <li>Compatible with carabiners, MOLLE, and backpack lashing</li>
+          <li>Rapid-dry materials make them easy to stash and go</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Market Analysis -->
+    <div class="content-section">
+      <h2>Market Analysis</h2>
+      
+      <h3>Use Cases</h3>
+      <p>Sammies are designed to be versatile — from summit to sidewalk.</p>
+      <ul>
+        <li>Backpacking & Thru-Hiking: Perfect post-hike comfort with zero bulk</li>
+        <li>Ski Trips & Snowboarding: Stay warm and dry after you unclip</li>
+        <li>Travel & Hostels: Sanitary, lightweight indoor/outdoor option</li>
+        <li>Emergency Kits & Military: Compact and ready for deployment</li>
+        <li>Camping & Vanlife: A go-to shoe for setting up camp and lounging</li>
+      </ul>
+
+      <h3>Target Audience</h3>
+      <ul>
+        <li>Backpackers and thru-hikers</li>
+        <li>Outdoor travelers and minimalists</li>
+        <li>Vanlifers and weekend warriors</li>
+        <li>Skiers and winter adventurers</li>
+        <li>Military, first responders, and preparedness users</li>
+      </ul>
+
+      <h3>Competitive Edge</h3>
+      <table class="settings-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Traditional Outdoor Shoes</th>
+            <th>Sammies</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Portability</td>
+            <td>Bulky, difficult to pack</td>
+            <td>Collapsible, 70% volume reduction</td>
+          </tr>
+          <tr>
+            <td>Performance</td>
+            <td>Full performance</td>
+            <td>Maintains full performance</td>
+          </tr>
+          <tr>
+            <td>Versatility</td>
+            <td>Single-use design</td>
+            <td>Adaptable to multiple environments</td>
+          </tr>
+          <tr>
+            <td>Travel Convenience</td>
+            <td>Requires dedicated space</td>
+            <td>Integrates with existing gear</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Business Development -->
+    <div class="content-section">
+      <h2>Business Development</h2>
+      
+      <h3>Product Development Timeline</h3>
+      <div class="process-steps">
+        <ol>
+          <li><strong>Concept Development:</strong> Initial design ideation and market research</li>
+          <li><strong>Prototype Creation:</strong> First functional prototypes with collapsible mechanism</li>
+          <li><strong>Material Testing:</strong> Evaluation of waterproof materials and durability</li>
+          <li><strong>User Testing:</strong> Field trials with outdoor enthusiasts</li>
+          <li><strong>Design Refinement:</strong> Iterative improvements based on feedback</li>
+          <li><strong>Manufacturing Preparation:</strong> Supply chain development and production planning</li>
+        </ol>
+      </div>
+
+      <h3>Funding Strategy</h3>
+      <ul>
+        <li>Initial bootstrapping and personal investment</li>
+        <li>Angel investor presentations and pitch competitions</li>
+        <li>Strategic partnerships with outdoor gear manufacturers</li>
+        <li>Crowdfunding campaign for market validation</li>
+        <li>Venture capital funding for scaling operations</li>
+      </ul>
+
+      <h3>Go-to-Market Strategy</h3>
+      <div class="process-steps">
+        <ol>
+          <li><strong>Phase 1:</strong> Soft launch through online store (testers + feedback loop)</li>
+          <li><strong>Phase 2:</strong> Influencer partnerships + crowdfunding</li>
+          <li><strong>Phase 3:</strong> Scale through direct sales and retail placement</li>
+          <li><strong>Phase 4:</strong> Expand product line and introduce collaborations</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Technical Specifications -->
+    <div class="content-section">
+      <h2>Technical Specifications</h2>
+      
+      <table class="settings-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Weight (pair)</td>
+            <td>450–550g (varies by size)</td>
+          </tr>
+          <tr>
+            <td>Volume Reduction</td>
+            <td>Up to 70%</td>
+          </tr>
+          <tr>
+            <td>Waterproof Rating</td>
+            <td>IPX7 (1m submersion for 30 min)</td>
+          </tr>
+          <tr>
+            <td>Deployment Time</td>
+            <td>&lt;30 seconds</td>
+          </tr>
+          <tr>
+            <td>Lifespan</td>
+            <td>1000+ deployment cycles</td>
+          </tr>
+          <tr>
+            <td>Sizes</td>
+            <td>US 7–13 (half sizes available)</td>
+          </tr>
+          <tr>
+            <td>Materials</td>
+            <td>TPU membrane, durable nylon, synthetic down</td>
+          </tr>
+          <tr>
+            <td>Colors</td>
+            <td>Black, Navy, Forest Green, Desert Tan</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Development Process -->
+    <div class="content-section">
+      <h2>Development Process</h2>
+      
+      <p>Our design journey began by asking: why are campsite shoes so inconvenient?</p>
+      
+      <div class="process-steps">
+        <h3>Stage 1: Ideation & Research</h3>
+        <ul>
+          <li>Researched user pain points with traditional boots and slippers</li>
+          <li>Interviewed hikers, skiers, and vanlifers about gear preferences</li>
+        </ul>
+
+        <h3>Stage 2: Prototyping & Testing</h3>
+        <ul>
+          <li>70+ 3D printed sole iterations using TPU on a Prusa MK4</li>
+          <li>Pressure-balancing nozzle designed to allow airflow and drainage</li>
+          <li>Ribbed sealing fins designed to lock insert into place inside a glass bottle (bottle insert project crossover)</li>
+        </ul>
+
+        <h3>Stage 3: Materials & Fit</h3>
+        <ul>
+          <li>Sourced lightweight synthetics, breathable inner lining, and down fill</li>
+          <li>Designed fit system with adjustable drawstring-like synching</li>
+          <li>Half-inch spacing between inflatable support segments for better adaptation to foot shapes</li>
+        </ul>
+
+        <h3>Stage 4: Field Testing</h3>
+        <ul>
+          <li>Real-world use with hikers and skiers</li>
+          <li>Adjusted seam placements and gasket overlays for waterproofing</li>
+          <li>Optimized fold pattern to prevent fatigue failure</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Design Challenges -->
+    <div class="content-section">
+      <h2>Design Challenges & Solutions</h2>
+      
+      <table class="settings-table">
+        <thead>
+          <tr>
+            <th>Challenge</th>
+            <th>Solution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Structural stability during collapse</td>
+            <td>Reinforced hinge layout + multi-material construction</td>
+          </tr>
+          <tr>
+            <td>Waterproofing moving components</td>
+            <td>Gasket-lined joints with membrane overlap</td>
+          </tr>
+          <tr>
+            <td>Weight optimization</td>
+            <td>Composite blend of flexible TPU + lightweight nylon</td>
+          </tr>
+          <tr>
+            <td>Manufacturing scalability</td>
+            <td>Modular tooling and part standardization</td>
+          </tr>
+          <tr>
+            <td>User intuitiveness</td>
+            <td>One-pull deployment mechanism tested with all age groups</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Future Development -->
+    <div class="content-section">
+      <h2>Future Development</h2>
+      
+      <div class="learnings-section">
+        <h3>Product Line Expansion</h3>
+        <ul>
+          <li>Specialized versions for different outdoor activities (hiking, climbing, water sports)</li>
+          <li>Seasonal variations with temperature-specific features</li>
+          <li>Collaboration models with outdoor gear brands</li>
+          <li>Custom sizing and personalization options</li>
+        </ul>
+      </div>
+
+      <div class="learnings-section">
+        <h3>Technology Integration</h3>
+        <ul>
+          <li>Smart sensors for usage tracking and maintenance alerts</li>
+          <li>Integrated lighting systems for low-visibility conditions</li>
+          <li>Climate-responsive materials that adapt to temperature</li>
+          <li>Modular attachment system for additional gear</li>
+        </ul>
+      </div>
+
+      <div class="learnings-section">
+        <h3>Sustainability Roadmap</h3>
+        <p>We believe in building gear that lasts — and can evolve with you.</p>
+        <ul>
+          <li>Incorporate recycled nylons and eco-TPU in future batches</li>
+          <li>Offer repair kits and support a circular product model</li>
+          <li>Explore Sashiko-style visible repairs as part of our brand aesthetic</li>
+          <li>Partner with climate-conscious suppliers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<!-- Load JavaScript as a module -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <script type="module" src="scripts.js"></script>
+<script>
+  const audio = document.getElementById('backgroundMusic');
+  
+  // Store audio position before leaving page
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPosition', audio.currentTime);
+    localStorage.setItem('audioPlaying', !audio.paused);
+  });
+
+  // Restore audio position when page loads
+  window.addEventListener('load', () => {
+    const savedPosition = localStorage.getItem('audioPosition');
+    const wasPlaying = localStorage.getItem('audioPlaying') === 'true';
+    
+    if (savedPosition) {
+      audio.currentTime = parseFloat(savedPosition);
+      if (wasPlaying) {
+        audio.play();
+      }
+    }
+  });
+</script>
+</body>
+</html>
