@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6SMSKDJNQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N6SMSKDJNQ');
+</script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sammy Strear</title>
+  <title>About - Sammy Strear</title>
   <!-- Google Fonts: Inter -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Add the model-viewer library -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
-  <style>    /* Add new styles for the navigation section */
+  <style>
+    /* Add new styles for the navigation section */
     .nav-section {
       position: absolute;
       left: 40px;
       top: 40px;
       z-index: 1000;
-      background-color: transparent; /* ensures background is transparent */
+      background-color: transparent;
     }
 
-    /* Optional: Add hover effect for better visibility */
     .nav-section:hover {
-      background-color: rgba(255, 255, 255, 0.1); /* subtle background on hover */
-      backdrop-filter: blur(5px); /* slight blur effect on hover */
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
     }
 
-    /* Ensure dropdown stays on top */
     .dropdown-content {
       position: absolute;
-      z-index: 1001; /* higher than nav-section */
-    }</style>
+      z-index: 1001;
+    }
+  </style>
 
 </head>
 <body>
@@ -47,8 +55,8 @@
       <button class="cta-button">Explore</button>
       <div class="dropdown-content">
         <a href="index.html">Home</a>
-        <a href="ArtSamples.html">Art Samples</a>
         <a href="ProductSamples.html">Product Samples</a>
+        <a href="ArtSamples.html">Art Samples</a>
       </div>
     </div>
   </section>
