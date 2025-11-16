@@ -1,102 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6SMSKDJNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-N6SMSKDJNQ');
-</script>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sammy Strear</title>
-  <!-- Google Fonts: Inter -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Add the model-viewer library -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <style>
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sam Strear - Designer, Engineer, Builder. Creating physical and digital products with AI & automation.">
+    <title>Sam Strear | Designer • Engineer • Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- Audio element moved into the body with an id and preload attribute -->
-<audio id="backgroundMusic" autoplay loop preload="auto">
-  <source src="deep-relaxation-11497.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-  </audio>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <a href="#hero" class="nav-logo" aria-label="Home">
+                <img src="UNlogo.png" alt="Unstable Designs Logo" class="logo-img">
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-
-  <!-- Under Construction Banner -->
-  <section class="services fade-in" id="services">
-    <div class="bar">
-      <span class="bar_content">
-        Weekly Quote: "Art is never finished, only abandoned." - Leonardo da Vinci
-      </span>
-    </div>
-  </section>
-
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero-columns">
-      <div class="hero-content">
-        <h1>Sammy Strear</h1>
-        <h2></h2>
-        <p>
-          Engineer | Innovator | Entrepreneur | Product Designer
-        </p>
-        <!-- Dropdown Button -->
-        <div class="dropdown">
-          <button class="cta-button">Explore</button>
-          <div class="dropdown-content">
-            <a href="about.html">About</a>
-            <a href="ArtSamples.html">Art Samples</a>
-            <a href="ProductSamples.html">Product Samples</a>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Sam Strear</h1>
+                <p class="hero-subtitle">Thinker • Learner • Builder</p>
+                <p class="hero-description">
+                    I observe, analyze, and disassemble the world around me to solve problems. Whether I'm at my computer visualizing solutions across multiple screens or getting my hands dirty in the workshop, I'm driven by curiosity and the adventure of bringing ideas to life.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://unstabledesigns.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        View My Work
+                    </a>
+                    <a href="Sam_Strear_Resume__.docx.pdf" class="btn btn-secondary" download>
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="game-wrapper">
+                    <div class="game-container" aria-hidden="true">
+                        <canvas id="lego-tetris"></canvas>
+                    </div>
+                    <button class="game-play-btn" id="gamePlayBtn">Play</button>
+                    <h3 class="game-title">Block Builder</h3>
+                </div>
+                <!-- How to Play Modal -->
+                <div class="game-instructions-modal" id="gameInstructionsModal">
+                    <div class="game-instructions-content">
+                        <h3 class="instructions-title">How to Play</h3>
+                        <div class="instructions-text">
+                            <p><strong>Goal:</strong> Stack blocks to complete horizontal lines. When a line is full, it clears!</p>
+                            <div class="instructions-controls">
+                                <p><strong>Controls:</strong></p>
+                                <ul>
+                                    <li><strong>Move Left:</strong> Tap/click left side of game</li>
+                                    <li><strong>Move Right:</strong> Tap/click right side of game</li>
+                                    <li><strong>Rotate:</strong> Tap/click top half of game</li>
+                                    <li><strong>Fast Drop:</strong> Hold down arrow key (desktop)</li>
+                                </ul>
+                            </div>
+                            <p class="instructions-note">Blocks fall automatically. Position them strategically to clear lines!</p>
+                        </div>
+                        <button class="btn btn-primary instructions-confirm-btn" id="instructionsConfirmBtn">Got it!</button>
+                        <p class="instructions-memory">In memory of Papa Paul</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  
+    <!-- Personal Traits Section -->
+    <section class="traits" id="traits">
+        <div class="container">
+            <h2 class="section-title">How I Work</h2>
+            <div class="traits-grid">
+                <div class="trait-item">
+                    <h3 class="trait-title">Observant</h3>
+                    <p class="trait-description">I notice the details others miss, observing patterns and connections that lead to breakthrough solutions.</p>
+                </div>
+                <div class="trait-item">
+                    <h3 class="trait-title">Tactile Thinker</h3>
+                    <p class="trait-description">I learn by doing, getting my hands dirty, experimenting, and understanding through direct experience.</p>
+                </div>
+                <div class="trait-item">
+                    <h3 class="trait-title">Resourceful</h3>
+                    <p class="trait-description">I see possibilities where others see limitations, finding creative ways to bring ideas to life.</p>
+                </div>
+                <div class="trait-item">
+                    <h3 class="trait-title">Independent Thinker</h3>
+                    <p class="trait-description">I think outside the box, approaching problems from unique angles while staying grounded in reality.</p>
+                </div>
+                <div class="trait-item">
+                    <h3 class="trait-title">Resilient</h3>
+                    <p class="trait-description">I know when to push forward and when to pivot, balancing optimism with healthy skepticism.</p>
+                </div>
+                <div class="trait-item">
+                    <h3 class="trait-title">Present</h3>
+                    <p class="trait-description">Whether at my computer or in nature, I'm fully engaged in the moment, giving my full attention to what matters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- About Section -->
-  <section class="about fade-in" id="about">
-    <div class="container">
-    </div>
-  </section>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        At seven, I was hammering together scrap wood from the garage, creating what I thought was a plane. 
+                        A few years later, I was taking apart a <strong>Blackberry phone</strong> just to understand how the ball tracker worked. 
+                        That <strong>curiosity</strong>, the need to <strong>observe, inspect, and disassemble</strong> the world around me, has never left.
+                    </p>
+                    <p>
+                        It's the same drive that led me to start <strong>flying at 14</strong>, before I ever drove a car. Trusting in technology, 
+                        mechanics, and my own capabilities as I threw in the throttle.
+                    </p>
+                    <p>
+                        I'm a <strong>tactile thinker</strong> who <strong>learns by doing</strong>. Whether I'm dissembling problems at my computer, visualizing 
+                        solutions across multiple screens, or experimenting with new tools, physical or digital, I thrive when I'm 
+                        enveloped in the challenge.
+                    </p>
+                    <p>
+                        I love being taken over by the <strong>problem-solving adventure</strong> of picking up a new skill, 
+                        adding it to my tool belt, and then bringing my <strong>creativity to life</strong> by acting on what I've learned.
+                    </p>
+                    <p>
+                        As an <strong>Eagle Scout</strong>, I learned to explore the world through both text and real-life experience. 
+                        <strong>Backpacking with my dad</strong> showed me the balance between technology and being present, how innovation can improve our world 
+                        without taking away from genuine connection.
+                    </p>
+                    <p>
+                        I'm an <strong>introverted extrovert</strong> who finds joy in being active and present. Whether I'm pushing myself in the gym, 
+                        going for a hike, or collaborating with people who challenge me to <strong>think outside the box</strong>.
+                    </p>
+                    <p>
+                        At the end of the day, I'm a <strong>thinker and a learner</strong>. I approach problems with both <strong>optimism and healthy 
+                        skepticism</strong>, seeing all possibilities with openness and enough caution to know when to move on to the next adventure.
+                    </p>
+                    <p>
+                        That's what drives me as the founder of <strong>Unstable Designs</strong>: a way for me to explore the world around me 
+                        by thinking outside the box, building systems that function beautifully, one experiment at a time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Load JavaScript as a module -->
-  <script type="module" src="scripts.js"></script>
-  <script>
-    const audio = document.getElementById('backgroundMusic');
-    
-    // Store audio position before leaving page
-    window.addEventListener('beforeunload', () => {
-      localStorage.setItem('audioPosition', audio.currentTime);
-      localStorage.setItem('audioPlaying', !audio.paused);
-    });
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skills-category">
+                    <h3 class="skills-category-title">Engineering & Product</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">CAD (SolidWorks)</span>
+                        <span class="skill-tag">Prototyping & Fabrication</span>
+                        <span class="skill-tag">Rapid Iteration</span>
+                        <span class="skill-tag">Manufacturing Processes</span>
+                        <span class="skill-tag">Mechanical Systems</span>
+                    </div>
+                </div>
+                <div class="skills-category">
+                    <h3 class="skills-category-title">AI + Digital</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">n8n automation</span>
+                        <span class="skill-tag">LLM agents</span>
+                        <span class="skill-tag">Prompt engineering</span>
+                        <span class="skill-tag">Digital product design</span>
+                        <span class="skill-tag">Web development</span>
+                        <span class="skill-tag">API integrations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Restore audio position when page loads
-    window.addEventListener('load', () => {
-      const savedPosition = localStorage.getItem('audioPosition');
-      const wasPlaying = localStorage.getItem('audioPlaying') === 'true';
-      
-      if (savedPosition) {
-        audio.currentTime = parseFloat(savedPosition);
-        if (wasPlaying) {
-          audio.play();
-        }
-      }
-    });
-  </script>
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Design Engineer</h3>
+                        <p class="timeline-company">Quantum Performance Partners</p>
+                        <p class="timeline-date">2025 – Present</p>
+                        <ul class="timeline-bullets">
+                            <li>Developed automation systems to streamline workflows and improve efficiency</li>
+                            <li>Led site redesign initiatives with focus on user experience and modern design</li>
+                            <li>Mapped and optimized complex workflow processes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Founder</h3>
+                        <p class="timeline-company">Unstable Designs LLC</p>
+                        <p class="timeline-date">2023 – Present</p>
+                        <ul class="timeline-bullets">
+                            <li>Lead R&D initiatives for innovative product development</li>
+                            <li>Pioneer AI-assisted prototyping methodologies</li>
+                            <li>Manage full lifecycle product creation from concept to manufacturing</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Technician</h3>
+                        <p class="timeline-company">House of Motorrad</p>
+                        <p class="timeline-date">2022 – 2023</p>
+                        <ul class="timeline-bullets">
+                            <li>Performed hands-on mechanical work with precision and attention to detail</li>
+                            <li>Conducted training sessions for team members</li>
+                            <li>Contributed to brand expansion initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Manufacturing Engineering Intern</h3>
+                        <p class="timeline-company">TA Aerospace</p>
+                        <p class="timeline-date">2021 – 2022</p>
+                        <ul class="timeline-bullets">
+                            <li>Justified $500k+ capital expenditure projects</li>
+                            <li>Designed and implemented rack systems for manufacturing operations</li>
+                            <li>Supervised elastomer operations and quality control processes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <footer class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 class="section-title">Contact</h2>
+                    <p class="contact-text">Open to conversations, collaborations, and interesting problems.</p>
+                    <div class="contact-links">
+                        <a href="mailto:sammy@unstabledesigns.com" class="contact-link">Email</a>
+                        <a href="https://www.linkedin.com/in/samuelstrear/" class="contact-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </div>
+                    <div class="contact-download">
+                        <a href="Sam_Strear_Resume__.docx.pdf" class="btn btn-secondary" download>Download Resume (PDF)</a>
+                    </div>
+                </div>
+                <div class="contact-logo">
+                    <img src="UNlogo.png" alt="Unstable Designs" class="footer-logo">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
