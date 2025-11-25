@@ -97,6 +97,7 @@ a {
   backdrop-filter: blur(0px);
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
   border-bottom: 1px solid transparent;
+  padding: 1.5rem 0 0 0;
 }
 
 .header.scrolled {
@@ -108,16 +109,17 @@ a {
 .nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
+  align-items: flex-start;
+  padding: 0 2rem 1.5rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .nav-logo {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   transition: transform 0.3s ease;
+  padding: 0;
 }
 
 .nav-logo:hover {
@@ -125,8 +127,9 @@ a {
 }
 
 .logo-img {
-  height: 32px;
+  height: 100px;
   width: auto;
+  display: block;
 }
 
 .nav-menu {
@@ -829,7 +832,7 @@ section:nth-child(even) {
 }
 
 .footer-logo {
-  height: 40px;
+  height: 300px;
   width: auto;
   opacity: 0.6;
 }
